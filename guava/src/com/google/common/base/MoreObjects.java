@@ -333,22 +333,22 @@ public final class MoreObjects {
 
     private static boolean isEmpty(Object value) {
       // Put types estimated to be the most frequent first.
-      if (value instanceof CharSequence) {
-        return ((CharSequence) value).length() == 0;
-      } else if (value instanceof Collection) {
-        return ((Collection<?>) value).isEmpty();
-      } else if (value instanceof Map) {
-        return ((Map<?, ?>) value).isEmpty();
-      } else if (value instanceof java.util.Optional) {
-        return !((java.util.Optional<?>) value).isPresent();
-      } else if (value instanceof OptionalInt) {
-        return !((OptionalInt) value).isPresent();
-      } else if (value instanceof OptionalLong) {
-        return !((OptionalLong) value).isPresent();
-      } else if (value instanceof OptionalDouble) {
-        return !((OptionalDouble) value).isPresent();
-      } else if (value instanceof Optional) {
-        return !((Optional) value).isPresent();
+      if (value instanceof CharSequence sequence) {
+        return sequence.length() == 0;
+      } else if (value instanceof Collection<?> collection) {
+        return collection.isEmpty();
+      } else if (value instanceof Map<?,?> map) {
+        return map.isEmpty();
+      } else if (value instanceof java.util.Optional<?> optional) {
+        return optional.isEmpty();
+      } else if (value instanceof OptionalInt int1) {
+        return !int1.isPresent();
+      } else if (value instanceof OptionalLong long1) {
+        return !long1.isPresent();
+      } else if (value instanceof OptionalDouble double1) {
+        return !double1.isPresent();
+      } else if (value instanceof Optional<?> optional) {
+        return !optional.isPresent();
       } else if (value.getClass().isArray()) {
         return Array.getLength(value) == 0;
       }

@@ -358,5 +358,6 @@ public abstract class Optional<T> implements Serializable {
     };
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

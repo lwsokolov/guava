@@ -51,8 +51,7 @@ final class ByFunctionOrdering<F extends @Nullable Object, T extends @Nullable O
     if (object == this) {
       return true;
     }
-    if (object instanceof ByFunctionOrdering) {
-      ByFunctionOrdering<?, ?> that = (ByFunctionOrdering<?, ?>) object;
+    if (object instanceof ByFunctionOrdering<?,?> that) {
       return this.function.equals(that.function) && this.ordering.equals(that.ordering);
     }
     return false;
@@ -68,5 +67,6 @@ final class ByFunctionOrdering<F extends @Nullable Object, T extends @Nullable O
     return ordering + ".onResultOf(" + function + ")";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

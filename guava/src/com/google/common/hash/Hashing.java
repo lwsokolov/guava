@@ -813,8 +813,7 @@ public final class Hashing {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof ConcatenatedHashFunction) {
-        ConcatenatedHashFunction other = (ConcatenatedHashFunction) object;
+      if (object instanceof ConcatenatedHashFunction other) {
         return Arrays.equals(functions, other.functions);
       }
       return false;

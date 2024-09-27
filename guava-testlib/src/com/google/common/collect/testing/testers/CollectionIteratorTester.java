@@ -90,8 +90,7 @@ public class CollectionIteratorTester<E extends @Nullable Object>
     Iterator<E> iterator = collection.iterator();
     Object element = iterator.next();
     // If it's an Entry, it may become invalid once it's removed from the Map. Copy it.
-    if (element instanceof Entry) {
-      Entry<?, ?> entry = (Entry<?, ?>) element;
+    if (element instanceof Entry<?,?> entry) {
       element = mapEntry(entry.getKey(), entry.getValue());
     }
     assertTrue(collection.contains(element)); // sanity check

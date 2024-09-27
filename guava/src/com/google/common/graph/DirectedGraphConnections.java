@@ -84,8 +84,8 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
 
       @Override
       public boolean equals(@CheckForNull Object that) {
-        if (that instanceof Pred) {
-          return this.node.equals(((Pred<?>) that).node);
+        if (that instanceof Pred<?> pred) {
+          return this.node.equals(pred.node);
         } else {
           return false;
         }
@@ -105,8 +105,8 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
 
       @Override
       public boolean equals(@CheckForNull Object that) {
-        if (that instanceof Succ) {
-          return this.node.equals(((Succ<?>) that).node);
+        if (that instanceof Succ<?> succ) {
+          return this.node.equals(succ.node);
         } else {
           return false;
         }
@@ -426,8 +426,8 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
     if (value == PRED) {
       return null;
     }
-    if (value instanceof PredAndSucc) {
-      return (V) ((PredAndSucc) value).successorValue;
+    if (value instanceof PredAndSucc succ) {
+      return (V) succ.successorValue;
     }
     return (V) value;
   }
@@ -442,8 +442,8 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
     if (previousValue == PRED) {
       adjacentNodeValues.remove(node);
       removedPredecessor = true;
-    } else if (previousValue instanceof PredAndSucc) {
-      adjacentNodeValues.put((N) node, ((PredAndSucc) previousValue).successorValue);
+    } else if (previousValue instanceof PredAndSucc succ) {
+      adjacentNodeValues.put((N) node, succ.successorValue);
       removedPredecessor = true;
     } else {
       removedPredecessor = false;
@@ -468,9 +468,9 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
 
     if (previousValue == null || previousValue == PRED) {
       removedValue = null;
-    } else if (previousValue instanceof PredAndSucc) {
+    } else if (previousValue instanceof PredAndSucc succ) {
       adjacentNodeValues.put((N) node, PRED);
-      removedValue = ((PredAndSucc) previousValue).successorValue;
+      removedValue = succ.successorValue;
     } else { // successor
       adjacentNodeValues.remove(node);
       removedValue = previousValue;
@@ -531,9 +531,9 @@ final class DirectedGraphConnections<N, V> implements GraphConnections<N, V> {
 
     if (previousValue == null) {
       previousSuccessor = null;
-    } else if (previousValue instanceof PredAndSucc) {
+    } else if (previousValue instanceof PredAndSucc succ) {
       adjacentNodeValues.put(node, new PredAndSucc(value));
-      previousSuccessor = ((PredAndSucc) previousValue).successorValue;
+      previousSuccessor = succ.successorValue;
     } else if (previousValue == PRED) {
       adjacentNodeValues.put(node, new PredAndSucc(value));
       previousSuccessor = null;

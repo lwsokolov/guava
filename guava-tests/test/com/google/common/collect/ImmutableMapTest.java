@@ -572,8 +572,8 @@ public class ImmutableMapTest extends TestCase {
 
     @Override
     public boolean equals(@Nullable Object x) {
-      return x instanceof ClassWithTerribleHashCode
-          && ((ClassWithTerribleHashCode) x).value == value;
+      return x instanceof ClassWithTerribleHashCode cwthc
+          && cwthc.value == value;
     }
 
     @Override
@@ -944,7 +944,7 @@ public class ImmutableMapTest extends TestCase {
 
     @Override
     public boolean equals(@Nullable Object o) {
-      return (o instanceof IntHolder) && ((IntHolder) o).value == value;
+      return (o instanceof IntHolder ih) && ih.value == value;
     }
 
     @Override

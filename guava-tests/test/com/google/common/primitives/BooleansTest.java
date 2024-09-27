@@ -610,9 +610,9 @@ public class BooleansTest extends TestCase {
     assertThat(list.get(0)).isSameInstanceAs(true);
     assertThat(list.get(1)).isSameInstanceAs(false);
     @SuppressWarnings("deprecation")
-    Boolean anotherTrue = new Boolean(true);
+    Boolean anotherTrue = Boolean.valueOf(true);
     @SuppressWarnings("deprecation")
-    Boolean anotherFalse = new Boolean(false);
+    Boolean anotherFalse = Boolean.valueOf(false);
     list.set(0, anotherTrue);
     assertThat(list.get(0)).isSameInstanceAs(true);
     list.set(1, anotherFalse);

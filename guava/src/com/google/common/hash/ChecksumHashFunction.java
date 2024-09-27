@@ -146,5 +146,6 @@ final class ChecksumHashFunction extends AbstractHashFunction implements Seriali
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0L;
 }

@@ -185,7 +185,7 @@ public class FinalizableReferenceQueueClassLoaderUnloadingTest extends TestCase 
     @Override
     public WeakReference<Object> call() {
       WeakReference<Object> wr =
-          new FinalizableWeakReference<Object>(new Integer(23), frq) {
+          new FinalizableWeakReference<Object>(Integer.valueOf(23), frq) {
             @Override
             public void finalizeReferent() {
               finalized.release();

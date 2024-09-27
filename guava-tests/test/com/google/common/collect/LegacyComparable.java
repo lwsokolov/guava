@@ -54,8 +54,7 @@ class LegacyComparable implements Comparable, Serializable {
 
   @Override
   public boolean equals(@Nullable Object object) {
-    if (object instanceof LegacyComparable) {
-      LegacyComparable that = (LegacyComparable) object;
+    if (object instanceof LegacyComparable that) {
       return this.value.equals(that.value);
     }
     return false;
@@ -66,5 +65,6 @@ class LegacyComparable implements Comparable, Serializable {
     return value.hashCode();
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

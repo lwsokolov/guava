@@ -489,7 +489,7 @@ public class Joiner {
      * method in the first place.)
      */
     requireNonNull(part);
-    return (part instanceof CharSequence) ? (CharSequence) part : part.toString();
+    return (part instanceof CharSequence cs) ? cs : part.toString();
   }
 
   private static Iterable<@Nullable Object> iterable(

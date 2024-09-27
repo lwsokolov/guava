@@ -180,7 +180,7 @@ class StandardNetwork<N, E> extends AbstractNetwork<N, E> {
     NetworkConnections<N, E> connections = nodeConnections.get(node);
     if (connections == null) {
       checkNotNull(node);
-      throw new IllegalArgumentException(String.format(NODE_NOT_IN_GRAPH, node));
+      throw new IllegalArgumentException(NODE_NOT_IN_GRAPH.formatted(node));
     }
     return connections;
   }
@@ -189,7 +189,7 @@ class StandardNetwork<N, E> extends AbstractNetwork<N, E> {
     N referenceNode = edgeToReferenceNode.get(edge);
     if (referenceNode == null) {
       checkNotNull(edge);
-      throw new IllegalArgumentException(String.format(EDGE_NOT_IN_GRAPH, edge));
+      throw new IllegalArgumentException(EDGE_NOT_IN_GRAPH.formatted(edge));
     }
     return referenceNode;
   }

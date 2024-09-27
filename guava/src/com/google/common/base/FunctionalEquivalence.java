@@ -31,6 +31,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 @ElementTypesAreNonnullByDefault
 final class FunctionalEquivalence<F, T> extends Equivalence<F> implements Serializable {
 
+  @Serial
   private static final long serialVersionUID = 0;
 
   private final Function<? super F, ? extends @Nullable T> function;
@@ -57,8 +58,7 @@ final class FunctionalEquivalence<F, T> extends Equivalence<F> implements Serial
     if (obj == this) {
       return true;
     }
-    if (obj instanceof FunctionalEquivalence) {
-      FunctionalEquivalence<?, ?> that = (FunctionalEquivalence<?, ?>) obj;
+    if (obj instanceof FunctionalEquivalence<?,?> that) {
       return function.equals(that.function) && resultEquivalence.equals(that.resultEquivalence);
     }
     return false;

@@ -55,5 +55,6 @@ class ImmutableEntry<K extends @Nullable Object, V extends @Nullable Object>
     throw new UnsupportedOperationException();
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

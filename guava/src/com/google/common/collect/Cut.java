@@ -118,6 +118,7 @@ abstract class Cut<C extends Comparable> implements Comparable<Cut<C>>, Serializ
     return (Cut<C>) BelowAll.INSTANCE;
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 
   private static final class BelowAll extends Cut<Comparable<?>> {
@@ -213,6 +214,7 @@ abstract class Cut<C extends Comparable> implements Comparable<Cut<C>>, Serializ
       return INSTANCE;
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -304,6 +306,7 @@ abstract class Cut<C extends Comparable> implements Comparable<Cut<C>>, Serializ
       return INSTANCE;
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -388,6 +391,7 @@ abstract class Cut<C extends Comparable> implements Comparable<Cut<C>>, Serializ
       return "\\" + endpoint + "/";
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -478,6 +482,7 @@ abstract class Cut<C extends Comparable> implements Comparable<Cut<C>>, Serializ
       return "/" + endpoint + "\\";
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 }

@@ -102,8 +102,7 @@ abstract class ImmutableMapEntrySet<K, V> extends ImmutableSet.CachingAsList<Ent
 
   @Override
   public boolean contains(@CheckForNull Object object) {
-    if (object instanceof Entry) {
-      Entry<?, ?> entry = (Entry<?, ?>) object;
+    if (object instanceof Entry<?,?> entry) {
       V value = map().get(entry.getKey());
       return value != null && value.equals(entry.getValue());
     }
@@ -152,6 +151,7 @@ abstract class ImmutableMapEntrySet<K, V> extends ImmutableSet.CachingAsList<Ent
       return map.entrySet();
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 }

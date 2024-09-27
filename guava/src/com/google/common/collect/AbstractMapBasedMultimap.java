@@ -1715,5 +1715,6 @@ abstract class AbstractMapBasedMultimap<K extends @Nullable Object, V extends @N
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 2447537837011683357L;
 }

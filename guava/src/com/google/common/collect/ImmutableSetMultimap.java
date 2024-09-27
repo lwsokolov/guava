@@ -277,8 +277,7 @@ public class ImmutableSetMultimap<K, V> extends ImmutableMultimap<K, V>
     @Override
     int expectedValueCollectionSize(int defaultExpectedValues, Iterable<?> values) {
       // Only trust the size of `values` if it is a Set and therefore probably already deduplicated.
-      if (values instanceof Set<?>) {
-        Set<?> collection = (Set<?>) values;
+      if (values instanceof Set<?> collection) {
         return Math.max(defaultExpectedValues, collection.size());
       } else {
         return defaultExpectedValues;
@@ -608,8 +607,7 @@ public class ImmutableSetMultimap<K, V> extends ImmutableMultimap<K, V>
 
     @Override
     public boolean contains(@CheckForNull Object object) {
-      if (object instanceof Entry) {
-        Entry<?, ?> entry = (Entry<?, ?>) object;
+      if (object instanceof Entry<?,?> entry) {
         return multimap.containsEntry(entry.getKey(), entry.getValue());
       }
       return false;
@@ -734,5 +732,6 @@ public class ImmutableSetMultimap<K, V> extends ImmutableMultimap<K, V>
 
   @GwtIncompatible // not needed in emulated source.
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

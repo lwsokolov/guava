@@ -185,7 +185,7 @@ public class FinalizableReferenceQueueClassLoaderUnloadingTest extends TestCase 
     @Override
     public WeakReference<Object> call() {
       WeakReference<Object> wr =
-          new FinalizableWeakReference<Object>(new Integer(23), frq) {
+          new FinalizableWeakReference<Object>(Integer.valueOf(23), frq) {
             @Override
             public void finalizeReferent() {
               finalized.release();
@@ -261,8 +261,8 @@ public class FinalizableReferenceQueueClassLoaderUnloadingTest extends TestCase 
 
   private URL[] getClassPathUrls() {
     ClassLoader classLoader = getClass().getClassLoader();
-    return classLoader instanceof URLClassLoader
-        ? ((URLClassLoader) classLoader).getURLs()
+    return classLoader instanceof URLClassLoader urlcl
+        ? urlcl.getURLs()
         : parseJavaClassPath().toArray(new URL[0]);
   }
 

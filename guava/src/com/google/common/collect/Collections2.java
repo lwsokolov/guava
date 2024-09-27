@@ -492,8 +492,7 @@ public final class Collections2 {
 
     @Override
     public boolean contains(@CheckForNull Object obj) {
-      if (obj instanceof List) {
-        List<?> list = (List<?>) obj;
+      if (obj instanceof List<?> list) {
         return isPermutation(inputList, list);
       }
       return false;
@@ -618,8 +617,7 @@ public final class Collections2 {
 
     @Override
     public boolean contains(@CheckForNull Object obj) {
-      if (obj instanceof List) {
-        List<?> list = (List<?>) obj;
+      if (obj instanceof List<?> list) {
         return isPermutation(inputList, list);
       }
       return false;

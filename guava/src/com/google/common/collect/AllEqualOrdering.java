@@ -63,5 +63,6 @@ final class AllEqualOrdering extends Ordering<@Nullable Object> implements Seria
     return "Ordering.allEqual()";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

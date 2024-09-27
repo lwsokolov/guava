@@ -74,8 +74,7 @@ public final class Suppliers {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof SupplierComposition) {
-        SupplierComposition<?, ?> that = (SupplierComposition<?, ?>) obj;
+      if (obj instanceof SupplierComposition<?,?> that) {
         return function.equals(that.function) && supplier.equals(that.supplier);
       }
       return false;
@@ -367,8 +366,7 @@ public final class Suppliers {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof SupplierOfInstance) {
-        SupplierOfInstance<?> that = (SupplierOfInstance<?>) obj;
+      if (obj instanceof SupplierOfInstance<?> that) {
         return Objects.equal(instance, that.instance);
       }
       return false;

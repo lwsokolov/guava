@@ -104,5 +104,6 @@ public final class LinkedHashMultiset<E extends @Nullable Object>
 
   @GwtIncompatible // not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

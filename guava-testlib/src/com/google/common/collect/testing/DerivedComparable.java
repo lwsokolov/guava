@@ -29,5 +29,6 @@ public class DerivedComparable extends BaseComparable {
     super(s);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

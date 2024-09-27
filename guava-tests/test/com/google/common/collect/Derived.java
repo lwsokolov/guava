@@ -25,5 +25,6 @@ class Derived extends Base {
     super(s);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

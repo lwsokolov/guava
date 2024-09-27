@@ -126,8 +126,7 @@ final class EmptyContiguousSet<C extends Comparable> extends ContiguousSet<C> {
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Set) {
-      Set<?> that = (Set<?>) object;
+    if (object instanceof Set<?> that) {
       return that.isEmpty();
     }
     return false;
@@ -157,6 +156,7 @@ final class EmptyContiguousSet<C extends Comparable> extends ContiguousSet<C> {
       return new EmptyContiguousSet<>(domain);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 

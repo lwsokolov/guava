@@ -115,10 +115,11 @@ public class WriteReplaceOverridesTest extends TestCase {
         continue;
       }
       assertWithMessage(
-              "To help optimizers, any class that inherits a package-private writeReplace() method"
-                  + " should override that method.\n"
-                  + "(An override that delegates to the supermethod is fine.)\n"
-                  + "%s has no such override despite inheriting writeReplace() from %s",
+              """
+              To help optimizers, any class that inherits a package-private writeReplace() method\
+               should override that method.
+              (An override that delegates to the supermethod is fine.)
+              %s has no such override despite inheriting writeReplace() from %s""",
               clazz.getName(), supersWithPackagePrivateWriteReplace.get().getName())
           .fail();
     }

@@ -598,8 +598,8 @@ public class SetsTest extends TestCase {
 
   public void testNewIdentityHashSet() {
     Set<Integer> set = Sets.newIdentityHashSet();
-    Integer value1 = new Integer(12357);
-    Integer value2 = new Integer(12357);
+    Integer value1 = Integer.valueOf(12357);
+    Integer value2 = Integer.valueOf(12357);
     assertTrue(set.add(value1));
     assertFalse(set.contains(value2));
     assertTrue(set.contains(value1));

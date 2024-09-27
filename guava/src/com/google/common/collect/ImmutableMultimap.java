@@ -226,8 +226,7 @@ public abstract class ImmutableMultimap<K, V> extends BaseImmutableMultimap<K, V
      * values} if it is a Set and therefore probably already deduplicated.
      */
     int expectedValueCollectionSize(int defaultExpectedValues, Iterable<?> values) {
-      if (values instanceof Collection<?>) {
-        Collection<?> collection = (Collection<?>) values;
+      if (values instanceof Collection<?> collection) {
         return Math.max(defaultExpectedValues, collection.size());
       } else {
         return defaultExpectedValues;
@@ -641,8 +640,7 @@ public abstract class ImmutableMultimap<K, V> extends BaseImmutableMultimap<K, V
 
     @Override
     public boolean contains(@CheckForNull Object object) {
-      if (object instanceof Entry) {
-        Entry<?, ?> entry = (Entry<?, ?>) object;
+      if (object instanceof Entry<?,?> entry) {
         return multimap.containsEntry(entry.getKey(), entry.getValue());
       }
       return false;
@@ -657,6 +655,7 @@ public abstract class ImmutableMultimap<K, V> extends BaseImmutableMultimap<K, V
       return super.writeReplace();
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -869,10 +868,12 @@ public abstract class ImmutableMultimap<K, V> extends BaseImmutableMultimap<K, V
       return super.writeReplace();
     }
 
-    @J2ktIncompatible // serialization
+    @J2ktIncompatible
+    @Serial // serialization
     private static final long serialVersionUID = 0;
   }
 
-  @J2ktIncompatible // serialization
+  @J2ktIncompatible
+  @Serial // serialization
   private static final long serialVersionUID = 0;
 }

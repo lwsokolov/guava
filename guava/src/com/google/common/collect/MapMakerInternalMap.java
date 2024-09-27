@@ -2698,8 +2698,7 @@ class MapMakerInternalMap<
     @Override
     public boolean equals(@CheckForNull Object object) {
       // Cannot use key and value equivalence
-      if (object instanceof Entry) {
-        Entry<?, ?> that = (Entry<?, ?>) object;
+      if (object instanceof Entry<?,?> that) {
         return key.equals(that.getKey()) && value.equals(that.getValue());
       }
       return false;
@@ -2841,6 +2840,7 @@ class MapMakerInternalMap<
 
   // Serialization Support
 
+  @Serial
   private static final long serialVersionUID = 5;
 
   Object writeReplace() {
@@ -2864,6 +2864,7 @@ class MapMakerInternalMap<
    */
   abstract static class AbstractSerializationProxy<K, V> extends ForwardingConcurrentMap<K, V>
       implements Serializable {
+    @Serial
     private static final long serialVersionUID = 3;
 
     final Strength keyStrength;
@@ -2934,6 +2935,7 @@ class MapMakerInternalMap<
    * circular dependency is present, so the proxy must be able to behave as the map itself.
    */
   private static final class SerializationProxy<K, V> extends AbstractSerializationProxy<K, V> {
+    @Serial
     private static final long serialVersionUID = 3;
 
     SerializationProxy(

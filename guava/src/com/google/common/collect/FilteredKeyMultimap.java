@@ -198,8 +198,7 @@ class FilteredKeyMultimap<K extends @Nullable Object, V extends @Nullable Object
     @Override
     @SuppressWarnings("unchecked")
     public boolean remove(@CheckForNull Object o) {
-      if (o instanceof Entry) {
-        Entry<?, ?> entry = (Entry<?, ?>) o;
+      if (o instanceof Entry<?,?> entry) {
         if (unfiltered.containsKey(entry.getKey())
             // if this holds, then we know entry.getKey() is a K
             && keyPredicate.apply((K) entry.getKey())) {

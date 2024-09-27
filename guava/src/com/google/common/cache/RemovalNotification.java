@@ -68,5 +68,6 @@ public final class RemovalNotification<K, V>
     return cause.wasEvicted();
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -598,8 +598,7 @@ public abstract class BaseEncoding {
 
     @Override
     public boolean equals(@CheckForNull Object other) {
-      if (other instanceof Alphabet) {
-        Alphabet that = (Alphabet) other;
+      if (other instanceof Alphabet that) {
         return this.ignoreCase == that.ignoreCase && Arrays.equals(this.chars, that.chars);
       }
       return false;
@@ -934,8 +933,7 @@ public abstract class BaseEncoding {
 
     @Override
     public boolean equals(@CheckForNull Object other) {
-      if (other instanceof StandardBaseEncoding) {
-        StandardBaseEncoding that = (StandardBaseEncoding) other;
+      if (other instanceof StandardBaseEncoding that) {
         return this.alphabet.equals(that.alphabet)
             && Objects.equals(this.paddingChar, that.paddingChar);
       }

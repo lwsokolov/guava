@@ -212,14 +212,14 @@ public final class TypeResolver {
    */
   public Type resolveType(Type type) {
     checkNotNull(type);
-    if (type instanceof TypeVariable) {
-      return typeTable.resolve((TypeVariable<?>) type);
-    } else if (type instanceof ParameterizedType) {
-      return resolveParameterizedType((ParameterizedType) type);
-    } else if (type instanceof GenericArrayType) {
-      return resolveGenericArrayType((GenericArrayType) type);
-    } else if (type instanceof WildcardType) {
-      return resolveWildcardType((WildcardType) type);
+    if (type instanceof TypeVariable<?> variable) {
+      return typeTable.resolve(variable);
+    } else if (type instanceof ParameterizedType parameterizedType) {
+      return resolveParameterizedType(parameterizedType);
+    } else if (type instanceof GenericArrayType arrayType) {
+      return resolveGenericArrayType(arrayType);
+    } else if (type instanceof WildcardType wildcardType) {
+      return resolveWildcardType(wildcardType);
     } else {
       // if Class<?>, no resolution needed, we are done.
       return type;
@@ -465,13 +465,11 @@ public final class TypeResolver {
       if (type instanceof TypeVariable) {
         return type;
       }
-      if (type instanceof GenericArrayType) {
-        GenericArrayType arrayType = (GenericArrayType) type;
+      if (type instanceof GenericArrayType arrayType) {
         return Types.newArrayType(
             notForTypeVariable().capture(arrayType.getGenericComponentType()));
       }
-      if (type instanceof ParameterizedType) {
-        ParameterizedType parameterizedType = (ParameterizedType) type;
+      if (type instanceof ParameterizedType parameterizedType) {
         Class<?> rawType = (Class<?>) parameterizedType.getRawType();
         TypeVariable<?>[] typeVars = rawType.getTypeParameters();
         Type[] typeArgs = parameterizedType.getActualTypeArguments();
@@ -483,8 +481,7 @@ public final class TypeResolver {
             rawType,
             typeArgs);
       }
-      if (type instanceof WildcardType) {
-        WildcardType wildcardType = (WildcardType) type;
+      if (type instanceof WildcardType wildcardType) {
         Type[] lowerBounds = wildcardType.getLowerBounds();
         if (lowerBounds.length == 0) { // ? extends something changes to capture-of
           return captureAsTypeVariable(wildcardType.getUpperBounds());
@@ -562,8 +559,7 @@ public final class TypeResolver {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof TypeVariableKey) {
-        TypeVariableKey that = (TypeVariableKey) obj;
+      if (obj instanceof TypeVariableKey that) {
         return equalsTypeVariable(that.var);
       } else {
         return false;
@@ -578,8 +574,8 @@ public final class TypeResolver {
     /** Wraps {@code t} in a {@code TypeVariableKey} if it's a type variable. */
     @CheckForNull
     static TypeVariableKey forLookup(Type t) {
-      if (t instanceof TypeVariable) {
-        return new TypeVariableKey((TypeVariable<?>) t);
+      if (t instanceof TypeVariable<?> variable) {
+        return new TypeVariableKey(variable);
       } else {
         return null;
       }
@@ -590,8 +586,8 @@ public final class TypeResolver {
      * same {@code GenericDeclaration}.
      */
     boolean equalsType(Type type) {
-      if (type instanceof TypeVariable) {
-        return equalsTypeVariable((TypeVariable<?>) type);
+      if (type instanceof TypeVariable<?> variable) {
+        return equalsTypeVariable(variable);
       } else {
         return false;
       }

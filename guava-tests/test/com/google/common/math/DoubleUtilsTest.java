@@ -75,6 +75,6 @@ public class DoubleUtilsTest extends TestCase {
   }
 
   private static void failFormat(String template, Object... args) {
-    fail(String.format(template, args));
+    fail(template.formatted(args));
   }
 }

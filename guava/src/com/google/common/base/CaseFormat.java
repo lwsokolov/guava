@@ -183,8 +183,7 @@ public enum CaseFormat {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof StringConverter) {
-        StringConverter that = (StringConverter) object;
+      if (object instanceof StringConverter that) {
         return sourceFormat.equals(that.sourceFormat) && targetFormat.equals(that.targetFormat);
       }
       return false;
@@ -200,6 +199,7 @@ public enum CaseFormat {
       return sourceFormat + ".converterTo(" + targetFormat + ")";
     }
 
+    @Serial
     private static final long serialVersionUID = 0L;
   }
 

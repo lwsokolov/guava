@@ -230,8 +230,7 @@ public final class UnsignedInteger extends Number implements Comparable<Unsigned
 
   @Override
   public boolean equals(@CheckForNull Object obj) {
-    if (obj instanceof UnsignedInteger) {
-      UnsignedInteger other = (UnsignedInteger) obj;
+    if (obj instanceof UnsignedInteger other) {
       return value == other.value;
     }
     return false;

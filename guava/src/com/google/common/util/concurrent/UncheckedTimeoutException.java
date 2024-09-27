@@ -42,5 +42,6 @@ public class UncheckedTimeoutException extends RuntimeException {
     super(message, cause);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

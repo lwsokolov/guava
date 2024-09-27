@@ -88,8 +88,8 @@ final class ImmutableEnumMap<K extends Enum<K>, V> extends IteratorBasedImmutabl
     if (object == this) {
       return true;
     }
-    if (object instanceof ImmutableEnumMap) {
-      object = ((ImmutableEnumMap<?, ?>) object).delegate;
+    if (object instanceof ImmutableEnumMap<?,?> map) {
+      object = map.delegate;
     }
     return delegate.equals(object);
   }
@@ -141,6 +141,7 @@ final class ImmutableEnumMap<K extends Enum<K>, V> extends IteratorBasedImmutabl
       return new ImmutableEnumMap<>(delegate);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 }

@@ -226,8 +226,8 @@ public final class Sets {
    */
   @SuppressWarnings("NonApiType") // acts as a direct substitute for a constructor call
   public static <E extends @Nullable Object> HashSet<E> newHashSet(Iterable<? extends E> elements) {
-    return (elements instanceof Collection)
-        ? new HashSet<E>((Collection<? extends E>) elements)
+    return (elements instanceof Collection<?> c)
+        ? new HashSet<E>(c)
         : newHashSet(elements.iterator());
   }
 
@@ -339,8 +339,8 @@ public final class Sets {
   @SuppressWarnings("NonApiType") // acts as a direct substitute for a constructor call
   public static <E extends @Nullable Object> LinkedHashSet<E> newLinkedHashSet(
       Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new LinkedHashSet<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new LinkedHashSet<>(collection);
     }
     LinkedHashSet<E> set = newLinkedHashSet();
     Iterables.addAll(set, elements);
@@ -485,8 +485,8 @@ public final class Sets {
     // We copy elements to an ArrayList first, rather than incurring the
     // quadratic cost of adding them to the COWAS directly.
     Collection<? extends E> elementsCollection =
-        (elements instanceof Collection)
-            ? (Collection<? extends E>) elements
+        (elements instanceof Collection<?> c)
+            ? c
             : Lists.newArrayList(elements);
     return new CopyOnWriteArraySet<>(elementsCollection);
   }
@@ -1503,12 +1503,10 @@ public final class Sets {
     public boolean equals(@CheckForNull Object object) {
       // Warning: this is broken if size() == 0, so it is critical that we
       // substitute an empty ImmutableSet to the user in place of this
-      if (object instanceof CartesianSet) {
-        CartesianSet<?> that = (CartesianSet<?>) object;
+      if (object instanceof CartesianSet<?> that) {
         return this.axes.equals(that.axes);
       }
-      if (object instanceof Set) {
-        Set<?> that = (Set<?>) object;
+      if (object instanceof Set<?> that) {
         return this.size() == that.size() && this.containsAll(that);
       }
       return false;
@@ -1641,8 +1639,7 @@ public final class Sets {
 
     @Override
     public boolean contains(@CheckForNull Object obj) {
-      if (obj instanceof Set) {
-        Set<?> set = (Set<?>) obj;
+      if (obj instanceof Set<?> set) {
         return inputSet.keySet().containsAll(set);
       }
       return false;
@@ -1650,8 +1647,7 @@ public final class Sets {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof PowerSet) {
-        PowerSet<?> that = (PowerSet<?>) obj;
+      if (obj instanceof PowerSet<?> that) {
         return inputSet.keySet().equals(that.inputSet.keySet());
       }
       return super.equals(obj);
@@ -1709,8 +1705,7 @@ public final class Sets {
     return new AbstractSet<Set<E>>() {
       @Override
       public boolean contains(@CheckForNull Object o) {
-        if (o instanceof Set) {
-          Set<?> s = (Set<?>) o;
+        if (o instanceof Set<?> s) {
           return s.size() == size && index.keySet().containsAll(s);
         }
         return false;
@@ -1814,8 +1809,7 @@ public final class Sets {
     if (s == object) {
       return true;
     }
-    if (object instanceof Set) {
-      Set<?> o = (Set<?>) object;
+    if (object instanceof Set<?> o) {
 
       try {
         return s.size() == o.size() && s.containsAll(o);
@@ -2027,8 +2021,8 @@ public final class Sets {
 
   static boolean removeAllImpl(Set<?> set, Collection<?> collection) {
     checkNotNull(collection); // for GWT
-    if (collection instanceof Multiset) {
-      collection = ((Multiset<?>) collection).elementSet();
+    if (collection instanceof Multiset<?> multiset) {
+      collection = multiset.elementSet();
     }
     /*
      * AbstractSet.removeAll(List) has quadratic behavior if the list size

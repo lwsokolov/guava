@@ -415,8 +415,7 @@ public class EqualsTesterTest extends TestCase {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-      if (obj instanceof NamedObject) {
-        NamedObject that = (NamedObject) obj;
+      if (obj instanceof NamedObject that) {
         return name.equals(that.name) || peerNames.contains(that.name);
       }
       return false;

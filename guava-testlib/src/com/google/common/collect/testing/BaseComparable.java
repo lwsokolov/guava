@@ -42,8 +42,8 @@ public class BaseComparable implements Comparable<BaseComparable>, Serializable 
   public boolean equals(@Nullable Object other) {
     if (other == null) {
       return false;
-    } else if (other instanceof BaseComparable) {
-      return s.equals(((BaseComparable) other).s);
+    } else if (other instanceof BaseComparable comparable) {
+      return s.equals(comparable.s);
     } else {
       return false;
     }
@@ -54,5 +54,6 @@ public class BaseComparable implements Comparable<BaseComparable>, Serializable 
     return s.compareTo(o.s);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

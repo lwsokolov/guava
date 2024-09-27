@@ -666,7 +666,7 @@ public class DoublesTest extends TestCase {
         if (c >= 0x20 && c <= 0x7E) {
           escapedInput.append(c);
         } else {
-          escapedInput.append(String.format("\\u%04x", (int) c));
+          escapedInput.append("\\u%04x".formatted((int) c));
         }
       }
       fail("FLOATING_POINT_PATTERN should have matched valid input <" + escapedInput + ">");

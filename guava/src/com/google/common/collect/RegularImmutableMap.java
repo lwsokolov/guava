@@ -373,7 +373,8 @@ final class RegularImmutableMap<K, V> extends ImmutableMap<K, V> {
         return map.keySet();
       }
 
-      @J2ktIncompatible // serialization
+      @J2ktIncompatible
+      @Serial // serialization
       private static final long serialVersionUID = 0;
     }
   }
@@ -430,7 +431,8 @@ final class RegularImmutableMap<K, V> extends ImmutableMap<K, V> {
         return map.values();
       }
 
-      @J2ktIncompatible // serialization
+      @J2ktIncompatible
+      @Serial // serialization
       private static final long serialVersionUID = 0;
     }
   }
@@ -446,6 +448,7 @@ final class RegularImmutableMap<K, V> extends ImmutableMap<K, V> {
 
   // This class is never actually serialized directly, but we have to make the
   // warning go away (and suppressing would suppress for all nested classes too)
-  @J2ktIncompatible // serialization
+  @J2ktIncompatible
+  @Serial // serialization
   private static final long serialVersionUID = 0;
 }

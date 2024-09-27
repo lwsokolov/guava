@@ -93,8 +93,7 @@ final class Murmur3_32HashFunction extends AbstractHashFunction implements Seria
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Murmur3_32HashFunction) {
-      Murmur3_32HashFunction other = (Murmur3_32HashFunction) object;
+    if (object instanceof Murmur3_32HashFunction other) {
       return seed == other.seed && supplementaryPlaneFix == other.supplementaryPlaneFix;
     }
     return false;
@@ -424,5 +423,6 @@ final class Murmur3_32HashFunction extends AbstractHashFunction implements Seria
     return ((0x3L << 6) | (c >>> 6)) | ((0x80 | (0x3F & c)) << 8);
   }
 
+  @Serial
   private static final long serialVersionUID = 0L;
 }

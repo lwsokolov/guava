@@ -604,5 +604,6 @@ public final class ConcurrentHashMultiset<E> extends AbstractMultiset<E> impleme
     FieldSettersHolder.COUNT_MAP_FIELD_SETTER.set(this, deserializedCountMap);
   }
 
+  @Serial
   private static final long serialVersionUID = 1;
 }

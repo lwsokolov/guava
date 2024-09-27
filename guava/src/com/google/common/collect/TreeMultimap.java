@@ -226,5 +226,6 @@ public class TreeMultimap<K extends @Nullable Object, V extends @Nullable Object
 
   @GwtIncompatible // not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

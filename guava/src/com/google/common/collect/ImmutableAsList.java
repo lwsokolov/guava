@@ -73,6 +73,7 @@ abstract class ImmutableAsList<E> extends ImmutableList<E> {
       return collection.asList();
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 

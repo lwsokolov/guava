@@ -97,5 +97,6 @@ final class Absent<T> extends Optional<T> {
     return INSTANCE;
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -82,6 +82,7 @@ public class TreeBasedTable<R, C, V> extends StandardRowSortedTable<R, C, V> {
       return new TreeMap<>(comparator);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -344,5 +345,6 @@ public class TreeBasedTable<R, C, V> extends StandardRowSortedTable<R, C, V> {
     };
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -141,5 +141,6 @@ public final class EvictingQueue<E> extends ForwardingQueue<E> implements Serial
     return super.toArray();
   }
 
+  @Serial
   private static final long serialVersionUID = 0L;
 }

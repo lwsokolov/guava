@@ -138,8 +138,7 @@ public class AbstractInvocationHandlerTest extends TestCase {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-      if (obj instanceof DelegatingInvocationHandlerWithEquals) {
-        DelegatingInvocationHandlerWithEquals that = (DelegatingInvocationHandlerWithEquals) obj;
+      if (obj instanceof DelegatingInvocationHandlerWithEquals that) {
         return delegate.equals(that.delegate);
       } else {
         return false;

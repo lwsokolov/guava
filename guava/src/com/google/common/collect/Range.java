@@ -431,8 +431,7 @@ public final class Range<C extends Comparable> extends RangeGwtSerializationDepe
     }
 
     // this optimizes testing equality of two range-backed sets
-    if (values instanceof SortedSet) {
-      SortedSet<? extends C> set = (SortedSet<? extends C>) values;
+    if (values instanceof SortedSet<?> set) {
       Comparator<?> comparator = set.comparator();
       if (Ordering.natural().equals(comparator) || comparator == null) {
         return contains(set.first()) && contains(set.last());
@@ -649,8 +648,7 @@ public final class Range<C extends Comparable> extends RangeGwtSerializationDepe
    */
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Range) {
-      Range<?> other = (Range<?>) object;
+    if (object instanceof Range<?> other) {
       return lowerBound.equals(other.lowerBound) && upperBound.equals(other.upperBound);
     }
     return false;
@@ -714,8 +712,10 @@ public final class Range<C extends Comparable> extends RangeGwtSerializationDepe
           .result();
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -39,10 +39,10 @@ final class SortedIterables {
     checkNotNull(comparator);
     checkNotNull(elements);
     Comparator<?> comparator2;
-    if (elements instanceof SortedSet) {
-      comparator2 = comparator((SortedSet<?>) elements);
-    } else if (elements instanceof SortedIterable) {
-      comparator2 = ((SortedIterable<?>) elements).comparator();
+    if (elements instanceof SortedSet<?> set) {
+      comparator2 = comparator(set);
+    } else if (elements instanceof SortedIterable<?> iterable) {
+      comparator2 = iterable.comparator();
     } else {
       return false;
     }

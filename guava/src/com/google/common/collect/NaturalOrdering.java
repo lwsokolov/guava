@@ -77,5 +77,6 @@ final class NaturalOrdering extends Ordering<Comparable<?>> implements Serializa
 
   private NaturalOrdering() {}
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -138,8 +138,7 @@ public final class ByteStreams {
   public static long copy(ReadableByteChannel from, WritableByteChannel to) throws IOException {
     checkNotNull(from);
     checkNotNull(to);
-    if (from instanceof FileChannel) {
-      FileChannel sourceChannel = (FileChannel) from;
+    if (from instanceof FileChannel sourceChannel) {
       long oldPosition = sourceChannel.position();
       long position = oldPosition;
       long copied;
@@ -491,7 +490,7 @@ public final class ByteStreams {
     // When called at high frequency, boxing size generates too much garbage,
     // so avoid doing that if we can.
     if (size < 0) {
-      throw new IllegalArgumentException(String.format("Invalid size: %s", size));
+      throw new IllegalArgumentException("Invalid size: %s".formatted(size));
     }
     return newDataOutput(new ByteArrayOutputStream(size));
   }
@@ -926,7 +925,7 @@ public final class ByteStreams {
     checkNotNull(in);
     checkNotNull(b);
     if (len < 0) {
-      throw new IndexOutOfBoundsException(String.format("len (%s) cannot be negative", len));
+      throw new IndexOutOfBoundsException("len (%s) cannot be negative".formatted(len));
     }
     checkPositionIndexes(off, off + len, b.length);
     int total = 0;

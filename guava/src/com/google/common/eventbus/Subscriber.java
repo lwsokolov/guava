@@ -107,8 +107,7 @@ class Subscriber {
 
   @Override
   public final boolean equals(@CheckForNull Object obj) {
-    if (obj instanceof Subscriber) {
-      Subscriber that = (Subscriber) obj;
+    if (obj instanceof Subscriber that) {
       // Use == so that different equal instances will still receive events.
       // We only guard against the case that the same object is registered
       // multiple times

@@ -312,8 +312,9 @@ public abstract class AbstractPackageSanityTests extends TestCase {
     String message =
         String.format(
             Locale.ROOT,
-            "Error in automated %s of %s\n"
-                + "If the class is better tested explicitly, you can add %s() to %sTest",
+            """
+            Error in automated %s of %s
+            If the class is better tested explicitly, you can add %s() to %sTest""",
             description,
             cls,
             explicitTestNames.get(0),

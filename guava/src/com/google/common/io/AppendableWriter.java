@@ -88,16 +88,16 @@ class AppendableWriter extends Writer {
   @Override
   public void flush() throws IOException {
     checkNotClosed();
-    if (target instanceof Flushable) {
-      ((Flushable) target).flush();
+    if (target instanceof Flushable flushable) {
+      flushable.flush();
     }
   }
 
   @Override
   public void close() throws IOException {
     this.closed = true;
-    if (target instanceof Closeable) {
-      ((Closeable) target).close();
+    if (target instanceof Closeable closeable) {
+      closeable.close();
     }
   }
 

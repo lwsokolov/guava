@@ -56,7 +56,7 @@ public final class LineReader {
   /** Creates a new instance that will read lines from the given {@code Readable} object. */
   public LineReader(Readable readable) {
     this.readable = checkNotNull(readable);
-    this.reader = (readable instanceof Reader) ? (Reader) readable : null;
+    this.reader = (readable instanceof Reader r) ? r : null;
   }
 
   /**

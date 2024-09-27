@@ -145,8 +145,7 @@ public final class HostSpecifier {
       return true;
     }
 
-    if (other instanceof HostSpecifier) {
-      HostSpecifier that = (HostSpecifier) other;
+    if (other instanceof HostSpecifier that) {
       return this.canonicalForm.equals(that.canonicalForm);
     }
 

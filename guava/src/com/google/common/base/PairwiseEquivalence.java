@@ -55,9 +55,7 @@ final class PairwiseEquivalence<E, T extends @Nullable E> extends Equivalence<It
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof PairwiseEquivalence) {
-      @SuppressWarnings("unchecked")
-      PairwiseEquivalence<Object, Object> that = (PairwiseEquivalence<Object, Object>) object;
+    if (object instanceof PairwiseEquivalence<?,?> that) {
       return this.elementEquivalence.equals(that.elementEquivalence);
     }
 
@@ -74,5 +72,6 @@ final class PairwiseEquivalence<E, T extends @Nullable E> extends Equivalence<It
     return elementEquivalence + ".pairwise()";
   }
 
+  @Serial
   private static final long serialVersionUID = 1;
 }

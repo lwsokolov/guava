@@ -235,8 +235,8 @@ public abstract class ImmutableList<E> extends ImmutableCollection<E>
    */
   public static <E> ImmutableList<E> copyOf(Iterable<? extends E> elements) {
     checkNotNull(elements); // TODO(kevinb): is this here only for GWT?
-    return (elements instanceof Collection)
-        ? copyOf((Collection<? extends E>) elements)
+    return (elements instanceof Collection<?> c)
+        ? copyOf(c)
         : copyOf(elements.iterator());
   }
 
@@ -739,6 +739,7 @@ public abstract class ImmutableList<E> extends ImmutableCollection<E>
       return copyOf(elements);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -884,11 +885,9 @@ public abstract class ImmutableList<E> extends ImmutableCollection<E>
     @Override
     public Builder<E> addAll(Iterable<? extends E> elements) {
       checkNotNull(elements);
-      if (elements instanceof Collection) {
-        Collection<?> collection = (Collection<?>) elements;
+      if (elements instanceof Collection<?> collection) {
         ensureRoomFor(collection.size());
-        if (collection instanceof ImmutableCollection) {
-          ImmutableCollection<?> immutableCollection = (ImmutableCollection<?>) collection;
+        if (collection instanceof ImmutableCollection<?> immutableCollection) {
           size = immutableCollection.copyIntoArray(contents, size);
           return this;
         }
@@ -943,5 +942,6 @@ public abstract class ImmutableList<E> extends ImmutableCollection<E>
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

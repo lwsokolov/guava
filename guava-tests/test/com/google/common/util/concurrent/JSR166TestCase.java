@@ -299,9 +299,9 @@ abstract class JSR166TestCase extends TestCase {
   public void tearDown() throws Exception {
     Throwable t = threadFailure.getAndSet(null);
     if (t != null) {
-      if (t instanceof Error) throw (Error) t;
-      else if (t instanceof RuntimeException) throw (RuntimeException) t;
-      else if (t instanceof Exception) throw (Exception) t;
+      if (t instanceof Error error) throw error;
+      else if (t instanceof RuntimeException exception) throw exception;
+      else if (t instanceof Exception exception) throw exception;
       else {
         AssertionFailedError afe = new AssertionFailedError(t.toString());
         afe.initCause(t);
@@ -422,8 +422,8 @@ abstract class JSR166TestCase extends TestCase {
   public void threadUnexpectedException(Throwable t) {
     threadRecordFailure(t);
     t.printStackTrace();
-    if (t instanceof RuntimeException) throw (RuntimeException) t;
-    else if (t instanceof Error) throw (Error) t;
+    if (t instanceof RuntimeException exception) throw exception;
+    else if (t instanceof Error error) throw error;
     else {
       AssertionFailedError afe = new AssertionFailedError("unexpected exception: " + t);
       afe.initCause(t);

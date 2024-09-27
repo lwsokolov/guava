@@ -98,8 +98,7 @@ public final class EnumMultiset<E extends Enum<E>> extends AbstractMultiset<E>
   }
 
   private boolean isActuallyE(@CheckForNull Object o) {
-    if (o instanceof Enum) {
-      Enum<?> e = (Enum<?>) o;
+    if (o instanceof Enum<?> e) {
       int index = e.ordinal();
       return index < enumConstants.length && enumConstants[index] == e;
     }
@@ -317,6 +316,7 @@ public final class EnumMultiset<E extends Enum<E>> extends AbstractMultiset<E>
     Serialization.populateMultiset(this, stream);
   }
 
-  @GwtIncompatible // Not needed in emulated source
+  @GwtIncompatible
+  @Serial // Not needed in emulated source
   private static final long serialVersionUID = 0;
 }

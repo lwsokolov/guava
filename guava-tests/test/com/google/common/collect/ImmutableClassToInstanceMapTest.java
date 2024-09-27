@@ -210,7 +210,7 @@ public class ImmutableClassToInstanceMapTest extends TestCase {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-      return obj instanceof Impl && value == ((Impl) obj).value;
+      return obj instanceof Impl i && value == i.value;
     }
 
     @Override

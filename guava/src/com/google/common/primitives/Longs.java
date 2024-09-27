@@ -679,8 +679,8 @@ public final class Longs {
    * @since 1.0 (parameter was {@code Collection<Long>} before 12.0)
    */
   public static long[] toArray(Collection<? extends Number> collection) {
-    if (collection instanceof LongArrayAsList) {
-      return ((LongArrayAsList) collection).toLongArray();
+    if (collection instanceof LongArrayAsList list) {
+      return list.toLongArray();
     }
 
     Object[] boxedArray = collection.toArray();
@@ -758,14 +758,14 @@ public final class Longs {
     @Override
     public boolean contains(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      return (target instanceof Long) && Longs.indexOf(array, (Long) target, start, end) != -1;
+      return (target instanceof Long l) && Longs.indexOf(array, l, start, end) != -1;
     }
 
     @Override
     public int indexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Long) {
-        int i = Longs.indexOf(array, (Long) target, start, end);
+      if (target instanceof Long long1) {
+        int i = Longs.indexOf(array, long1, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -776,8 +776,8 @@ public final class Longs {
     @Override
     public int lastIndexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Long) {
-        int i = Longs.lastIndexOf(array, (Long) target, start, end);
+      if (target instanceof Long long1) {
+        int i = Longs.lastIndexOf(array, long1, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -809,8 +809,7 @@ public final class Longs {
       if (object == this) {
         return true;
       }
-      if (object instanceof LongArrayAsList) {
-        LongArrayAsList that = (LongArrayAsList) object;
+      if (object instanceof LongArrayAsList that) {
         int size = size();
         if (that.size() != size) {
           return false;

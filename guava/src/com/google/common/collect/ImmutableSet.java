@@ -185,8 +185,8 @@ public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements 
       if (!set.isPartialView()) {
         return set;
       }
-    } else if (elements instanceof EnumSet) {
-      return copyOfEnumSet((EnumSet<?>) elements);
+    } else if (elements instanceof EnumSet<?> set) {
+      return copyOfEnumSet(set);
     }
 
     if (elements.isEmpty()) {
@@ -219,8 +219,8 @@ public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements 
    * @throws NullPointerException if any of {@code elements} is null
    */
   public static <E> ImmutableSet<E> copyOf(Iterable<? extends E> elements) {
-    return (elements instanceof Collection)
-        ? copyOf((Collection<? extends E>) elements)
+    return (elements instanceof Collection<?> c)
+        ? copyOf(c)
         : copyOf(elements.iterator());
   }
 
@@ -286,9 +286,9 @@ public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements 
     if (object == this) {
       return true;
     }
-    if (object instanceof ImmutableSet
+    if (object instanceof ImmutableSet<?> set
         && isHashCodeFast()
-        && ((ImmutableSet<?>) object).isHashCodeFast()
+        && set.isHashCodeFast()
         && hashCode() != object.hashCode()) {
       return false;
     }
@@ -413,6 +413,7 @@ public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements 
       return copyOf(elements);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -996,5 +997,6 @@ public abstract class ImmutableSet<E> extends ImmutableCollection<E> implements 
         IntMath.sqrt(inputElementsIncludingAnyDuplicates, RoundingMode.CEILING));
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

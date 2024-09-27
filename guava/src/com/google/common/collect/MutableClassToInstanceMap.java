@@ -208,6 +208,7 @@ public final class MutableClassToInstanceMap<B extends @Nullable Object>
       return create(backingMap);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 }

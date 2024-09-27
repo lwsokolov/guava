@@ -285,8 +285,7 @@ public final class HostAndPort implements Serializable {
     if (this == other) {
       return true;
     }
-    if (other instanceof HostAndPort) {
-      HostAndPort that = (HostAndPort) other;
+    if (other instanceof HostAndPort that) {
       return Objects.equal(this.host, that.host) && this.port == that.port;
     }
     return false;
@@ -318,5 +317,6 @@ public final class HostAndPort implements Serializable {
     return port >= 0 && port <= 65535;
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

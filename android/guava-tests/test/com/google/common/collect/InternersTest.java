@@ -80,8 +80,8 @@ public class InternersTest extends TestCase {
 
 
   public void testWeak_afterGC() throws InterruptedException {
-    Integer canonical = new Integer(5);
-    Integer not = new Integer(5);
+    Integer canonical = Integer.valueOf(5);
+    Integer not = Integer.valueOf(5);
 
     Interner<Integer> pool = Interners.newWeakInterner();
     assertSame(canonical, pool.intern(canonical));

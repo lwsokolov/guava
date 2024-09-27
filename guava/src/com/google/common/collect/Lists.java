@@ -134,8 +134,8 @@ public final class Lists {
       Iterable<? extends E> elements) {
     checkNotNull(elements); // for GWT
     // Let ArrayList's sizing logic work, if possible
-    return (elements instanceof Collection)
-        ? new ArrayList<>((Collection<? extends E>) elements)
+    return (elements instanceof Collection<?> c)
+        ? new ArrayList<>(c)
         : newArrayList(elements.iterator());
   }
 
@@ -288,8 +288,8 @@ public final class Lists {
     // We copy elements to an ArrayList first, rather than incurring the
     // quadratic cost of adding them to the COWAL directly.
     Collection<? extends E> elementsCollection =
-        (elements instanceof Collection)
-            ? (Collection<? extends E>) elements
+        (elements instanceof Collection<?> c)
+            ? c
             : newArrayList(elements);
     return new CopyOnWriteArrayList<>(elementsCollection);
   }
@@ -771,12 +771,12 @@ public final class Lists {
 
     @Override
     public int indexOf(@CheckForNull Object object) {
-      return (object instanceof Character) ? string.indexOf((Character) object) : -1;
+      return (object instanceof Character c) ? string.indexOf(c) : -1;
     }
 
     @Override
     public int lastIndexOf(@CheckForNull Object object) {
-      return (object instanceof Character) ? string.lastIndexOf((Character) object) : -1;
+      return (object instanceof Character c) ? string.lastIndexOf(c) : -1;
     }
 
     @Override
@@ -842,9 +842,9 @@ public final class Lists {
    * @since 7.0
    */
   public static <T extends @Nullable Object> List<T> reverse(List<T> list) {
-    if (list instanceof ImmutableList) {
+    if (list instanceof ImmutableList<?> immutableList) {
       // Avoid nullness warnings.
-      List<?> reversed = ((ImmutableList<?>) list).reverse();
+      List<?> reversed = immutableList.reverse();
       @SuppressWarnings("unchecked")
       List<T> result = (List<T>) reversed;
       return result;

@@ -13,6 +13,9 @@
     Guava testlib is a set of java classes used for more convenient
     unit testing - particularly to assist the tests for Guava itself.
   </description>
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
@@ -29,6 +32,11 @@
     <dependency>
       <groupId>com.google.j2objc</groupId>
       <artifactId>j2objc-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>1.3.5</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>

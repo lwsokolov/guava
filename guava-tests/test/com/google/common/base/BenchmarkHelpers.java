@@ -22,9 +22,11 @@ package com.google.common.base;
  */
 class BenchmarkHelpers {
   private static final String WHITESPACE_CHARACTERS =
-      "\u00a0\u180e\u202f\t\n\013\f\r \u0085"
-          + "\u1680\u2028\u2029\u205f\u3000\u2000\u2001\u2002\u2003\u2004\u2005"
-          + "\u2006\u2007\u2008\u2009\u200a";
+      """
+       ᠎ 	
+       \
+          　      \
+           """;
   private static final String ASCII_CHARACTERS;
 
   static {

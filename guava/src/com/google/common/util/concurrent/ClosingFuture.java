@@ -2176,7 +2176,7 @@ public final class ClosingFuture<V extends @Nullable Object> {
             .get()
             .log(
                 WARNING,
-                String.format("while submitting close to %s; will close inline", executor),
+            "while submitting close to %s; will close inline".formatted(executor),
                 e);
       }
       closeQuietly(closeable, directExecutor());

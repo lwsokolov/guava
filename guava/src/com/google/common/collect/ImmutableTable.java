@@ -497,6 +497,7 @@ public abstract class ImmutableTable<R, C, V> extends AbstractTable<R, C, V>
           cellListBuilder.build(), ImmutableSet.copyOf(rowKeys), ImmutableSet.copyOf(columnKeys));
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -510,5 +511,6 @@ public abstract class ImmutableTable<R, C, V> extends AbstractTable<R, C, V>
     throw new InvalidObjectException("Use SerializedForm");
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

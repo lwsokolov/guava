@@ -94,10 +94,10 @@ abstract class AbstractCatchingFuture<
     V sourceResult = null;
     Throwable throwable = null;
     try {
-      if (localInputFuture instanceof InternalFutureFailureAccess) {
+      if (localInputFuture instanceof InternalFutureFailureAccess access) {
         throwable =
             InternalFutures.tryInternalFastPathGetFailure(
-                (InternalFutureFailureAccess) localInputFuture);
+                access);
       }
       if (throwable == null) {
         sourceResult = getDone(localInputFuture);

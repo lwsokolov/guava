@@ -45,8 +45,7 @@ final class ComparatorOrdering<T extends @Nullable Object> extends Ordering<T>
     if (object == this) {
       return true;
     }
-    if (object instanceof ComparatorOrdering) {
-      ComparatorOrdering<?> that = (ComparatorOrdering<?>) object;
+    if (object instanceof ComparatorOrdering<?> that) {
       return this.comparator.equals(that.comparator);
     }
     return false;
@@ -62,5 +61,6 @@ final class ComparatorOrdering<T extends @Nullable Object> extends Ordering<T>
     return comparator.toString();
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

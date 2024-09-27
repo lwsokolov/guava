@@ -125,8 +125,8 @@ public final class Iterables {
 
   /** Returns the number of elements in {@code iterable}. */
   public static int size(Iterable<?> iterable) {
-    return (iterable instanceof Collection)
-        ? ((Collection<?>) iterable).size()
+    return (iterable instanceof Collection<?> c)
+        ? c.size()
         : Iterators.size(iterable.iterator());
   }
 
@@ -139,8 +139,7 @@ public final class Iterables {
   // <? extends @Nullable Object> instead of <?> because of Kotlin b/189937072, discussed in Joiner.
   public static boolean contains(
       Iterable<? extends @Nullable Object> iterable, @CheckForNull Object element) {
-    if (iterable instanceof Collection) {
-      Collection<?> collection = (Collection<?>) iterable;
+    if (iterable instanceof Collection<?> collection) {
       return Collections2.safeContains(collection, element);
     }
     return Iterators.contains(iterable.iterator(), element);
@@ -158,8 +157,8 @@ public final class Iterables {
    */
   @CanIgnoreReturnValue
   public static boolean removeAll(Iterable<?> removeFrom, Collection<?> elementsToRemove) {
-    return (removeFrom instanceof Collection)
-        ? ((Collection<?>) removeFrom).removeAll(checkNotNull(elementsToRemove))
+    return (removeFrom instanceof Collection<?> c)
+        ? c.removeAll(checkNotNull(elementsToRemove))
         : Iterators.removeAll(removeFrom.iterator(), elementsToRemove);
   }
 
@@ -175,8 +174,8 @@ public final class Iterables {
    */
   @CanIgnoreReturnValue
   public static boolean retainAll(Iterable<?> removeFrom, Collection<?> elementsToRetain) {
-    return (removeFrom instanceof Collection)
-        ? ((Collection<?>) removeFrom).retainAll(checkNotNull(elementsToRetain))
+    return (removeFrom instanceof Collection<?> c)
+        ? c.retainAll(checkNotNull(elementsToRetain))
         : Iterators.retainAll(removeFrom.iterator(), elementsToRetain);
   }
 
@@ -228,9 +227,7 @@ public final class Iterables {
    * of {@code iterable2}.
    */
   public static boolean elementsEqual(Iterable<?> iterable1, Iterable<?> iterable2) {
-    if (iterable1 instanceof Collection && iterable2 instanceof Collection) {
-      Collection<?> collection1 = (Collection<?>) iterable1;
-      Collection<?> collection2 = (Collection<?>) iterable2;
+    if (iterable1 instanceof Collection<?> collection1 && iterable2 instanceof Collection<?> collection2) {
       if (collection1.size() != collection2.size()) {
         return false;
       }
@@ -326,8 +323,7 @@ public final class Iterables {
   @CanIgnoreReturnValue
   public static <T extends @Nullable Object> boolean addAll(
       Collection<T> addTo, Iterable<? extends T> elementsToAdd) {
-    if (elementsToAdd instanceof Collection) {
-      Collection<? extends T> c = (Collection<? extends T>) elementsToAdd;
+    if (elementsToAdd instanceof Collection<?> c) {
       return addTo.addAll(c);
     }
     return Iterators.addAll(addTo, checkNotNull(elementsToAdd).iterator());
@@ -345,10 +341,10 @@ public final class Iterables {
    *     Object)
    */
   public static int frequency(Iterable<?> iterable, @CheckForNull Object element) {
-    if ((iterable instanceof Multiset)) {
-      return ((Multiset<?>) iterable).count(element);
-    } else if ((iterable instanceof Set)) {
-      return ((Set<?>) iterable).contains(element) ? 1 : 0;
+    if ((iterable instanceof Multiset<?> multiset)) {
+      return multiset.count(element);
+    } else if ((iterable instanceof Set<?> set)) {
+      return set.contains(element) ? 1 : 0;
     }
     return Iterators.frequency(iterable.iterator(), element);
   }
@@ -864,8 +860,7 @@ public final class Iterables {
   @ParametricNullness
   public static <T extends @Nullable Object> T getLast(
       Iterable<? extends T> iterable, @ParametricNullness T defaultValue) {
-    if (iterable instanceof Collection) {
-      Collection<? extends T> c = (Collection<? extends T>) iterable;
+    if (iterable instanceof Collection<?> c) {
       if (c.isEmpty()) {
         return defaultValue;
       } else if (iterable instanceof List) {
@@ -1041,8 +1036,8 @@ public final class Iterables {
    * @return {@code true} if the iterable contains no elements
    */
   public static boolean isEmpty(Iterable<?> iterable) {
-    if (iterable instanceof Collection) {
-      return ((Collection<?>) iterable).isEmpty();
+    if (iterable instanceof Collection<?> collection) {
+      return collection.isEmpty();
     }
     return !iterable.iterator().hasNext();
   }

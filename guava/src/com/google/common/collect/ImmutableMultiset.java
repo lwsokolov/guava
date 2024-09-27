@@ -388,8 +388,7 @@ public abstract class ImmutableMultiset<E> extends ImmutableMultisetGwtSerializa
 
     @Override
     public boolean contains(@CheckForNull Object o) {
-      if (o instanceof Entry) {
-        Entry<?> entry = (Entry<?>) o;
+      if (o instanceof Entry<?> entry) {
         if (entry.getCount() <= 0) {
           return false;
         }
@@ -417,7 +416,9 @@ public abstract class ImmutableMultiset<E> extends ImmutableMultisetGwtSerializa
       throw new InvalidObjectException("Use EntrySetSerializedForm");
     }
 
-    @J2ktIncompatible private static final long serialVersionUID = 0;
+    @J2ktIncompatible
+    @Serial
+    private static final long serialVersionUID = 0;
   }
 
   @GwtIncompatible
@@ -667,8 +668,10 @@ public abstract class ImmutableMultiset<E> extends ImmutableMultisetGwtSerializa
       return ImmutableMultiset.copyOf(multiset);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

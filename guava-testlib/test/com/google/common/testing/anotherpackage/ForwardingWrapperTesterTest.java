@@ -123,8 +123,7 @@ public class ForwardingWrapperTesterTest extends TestCase {
               @SuppressWarnings("EqualsHashCode")
               @Override
               public boolean equals(@Nullable Object o) {
-                if (o instanceof ForwardingRunnable) {
-                  ForwardingRunnable that = (ForwardingRunnable) o;
+                if (o instanceof ForwardingRunnable that) {
                   return runnable.equals(that.runnable);
                 }
                 return false;
@@ -145,8 +144,7 @@ public class ForwardingWrapperTesterTest extends TestCase {
             return new ForwardingRunnable(runnable) {
               @Override
               public boolean equals(@Nullable Object o) {
-                if (o instanceof ForwardingRunnable) {
-                  ForwardingRunnable that = (ForwardingRunnable) o;
+                if (o instanceof ForwardingRunnable that) {
                   return runnable.equals(that.runnable);
                 }
                 return false;

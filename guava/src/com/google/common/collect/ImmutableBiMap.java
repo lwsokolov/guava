@@ -629,6 +629,7 @@ public abstract class ImmutableBiMap<K, V> extends ImmutableMap<K, V> implements
       return new Builder<>(size);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -677,5 +678,6 @@ public abstract class ImmutableBiMap<K, V> extends ImmutableMap<K, V> implements
     throw new UnsupportedOperationException();
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

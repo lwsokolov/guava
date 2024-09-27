@@ -98,5 +98,6 @@ final class ReverseNaturalOrdering extends Ordering<Comparable<?>> implements Se
 
   private ReverseNaturalOrdering() {}
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

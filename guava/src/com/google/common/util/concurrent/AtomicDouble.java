@@ -64,6 +64,7 @@ import java.util.function.DoubleUnaryOperator;
 @ReflectionSupport(value = ReflectionSupport.Level.FULL)
 @ElementTypesAreNonnullByDefault
 public class AtomicDouble extends Number implements Serializable {
+  @Serial
   private static final long serialVersionUID = 0L;
 
   private transient volatile long value;

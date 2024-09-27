@@ -116,5 +116,6 @@ final class UnmodifiableSortedMultiset<E extends @Nullable Object> extends Unmod
     return Multisets.unmodifiableSortedMultiset(delegate().tailMultiset(lowerBound, boundType));
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

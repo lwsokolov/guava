@@ -305,8 +305,7 @@ class FilteredEntryMultimap<K extends @Nullable Object, V extends @Nullable Obje
 
         @Override
         public boolean remove(@CheckForNull Object o) {
-          if (o instanceof Collection) {
-            Collection<?> c = (Collection<?>) o;
+          if (o instanceof Collection<?> c) {
             Iterator<Entry<K, Collection<V>>> entryIterator =
                 unfiltered.asMap().entrySet().iterator();
             while (entryIterator.hasNext()) {

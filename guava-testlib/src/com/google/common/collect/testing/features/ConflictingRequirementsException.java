@@ -49,5 +49,6 @@ public class ConflictingRequirementsException extends Exception {
     return super.getMessage() + " (source: " + source + ")";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -59,8 +59,7 @@ public final class TesterRequirements {
     if (object == this) {
       return true;
     }
-    if (object instanceof TesterRequirements) {
-      TesterRequirements that = (TesterRequirements) object;
+    if (object instanceof TesterRequirements that) {
       return this.presentFeatures.equals(that.presentFeatures)
           && this.absentFeatures.equals(that.absentFeatures);
     }

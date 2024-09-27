@@ -112,7 +112,7 @@ class CollectionBenchmarkSampleData {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-      return this == obj || (obj instanceof Element && ((Element) obj).hash == hash);
+      return this == obj || (obj instanceof Element e && e.hash == hash);
     }
 
     @Override

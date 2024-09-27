@@ -21,6 +21,7 @@ import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import java.lang.reflect.Constructor;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Benchmarks for {@link Monitor}.
@@ -51,7 +52,7 @@ public class MonitorBenchmark {
 
     strings = new String[capacity];
     for (int i = 0; i < capacity; i++) {
-      strings[i] = String.valueOf(Math.random());
+      strings[i] = String.valueOf(ThreadLocalRandom.current().nextDouble());
     }
   }
 

@@ -154,5 +154,6 @@ public final class HashMultimap<K extends @Nullable Object, V extends @Nullable 
 
   @GwtIncompatible // Not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -332,8 +332,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof NotPredicate) {
-        NotPredicate<?> that = (NotPredicate<?>) obj;
+      if (obj instanceof NotPredicate<?> that) {
         return predicate.equals(that.predicate);
       }
       return false;
@@ -375,8 +374,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof AndPredicate) {
-        AndPredicate<?> that = (AndPredicate<?>) obj;
+      if (obj instanceof AndPredicate<?> that) {
         return components.equals(that.components);
       }
       return false;
@@ -418,8 +416,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof OrPredicate) {
-        OrPredicate<?> that = (OrPredicate<?>) obj;
+      if (obj instanceof OrPredicate<?> that) {
         return components.equals(that.components);
       }
       return false;
@@ -466,8 +463,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof IsEqualToPredicate) {
-        IsEqualToPredicate that = (IsEqualToPredicate) obj;
+      if (obj instanceof IsEqualToPredicate that) {
         return target.equals(that.target);
       }
       return false;
@@ -510,8 +506,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof InstanceOfPredicate) {
-        InstanceOfPredicate<?> that = (InstanceOfPredicate<?>) obj;
+      if (obj instanceof InstanceOfPredicate<?> that) {
         return clazz == that.clazz;
       }
       return false;
@@ -549,8 +544,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof SubtypeOfPredicate) {
-        SubtypeOfPredicate that = (SubtypeOfPredicate) obj;
+      if (obj instanceof SubtypeOfPredicate that) {
         return clazz == that.clazz;
       }
       return false;
@@ -584,8 +578,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof InPredicate) {
-        InPredicate<?> that = (InPredicate<?>) obj;
+      if (obj instanceof InPredicate<?> that) {
         return target.equals(that.target);
       }
       return false;
@@ -622,8 +615,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof CompositionPredicate) {
-        CompositionPredicate<?, ?> that = (CompositionPredicate<?, ?>) obj;
+      if (obj instanceof CompositionPredicate<?,?> that) {
         return f.equals(that.f) && p.equals(that.p);
       }
       return false;
@@ -669,8 +661,7 @@ public final class Predicates {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof ContainsPatternPredicate) {
-        ContainsPatternPredicate that = (ContainsPatternPredicate) obj;
+      if (obj instanceof ContainsPatternPredicate that) {
 
         // Pattern uses Object (identity) equality, so we have to reach
         // inside to compare individual fields.

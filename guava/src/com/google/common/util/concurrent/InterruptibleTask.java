@@ -118,8 +118,8 @@ abstract class InterruptibleTask<T extends @Nullable Object>
     Runnable state = get();
     Blocker blocker = null;
     while (state instanceof Blocker || state == PARKED) {
-      if (state instanceof Blocker) {
-        blocker = (Blocker) state;
+      if (state instanceof Blocker blocker1) {
+        blocker = blocker1;
       }
       spinCount++;
       if (spinCount > MAX_BUSY_WAIT_SPINS) {
@@ -194,7 +194,7 @@ abstract class InterruptibleTask<T extends @Nullable Object>
     // in this CAS, there's no risk of interrupting the wrong thread or interrupting a thread that
     // isn't currently executing this task.
     Runnable currentRunner = get();
-    if (currentRunner instanceof Thread) {
+    if (currentRunner instanceof Thread thread) {
       Blocker blocker = new Blocker(this);
       blocker.setOwner(Thread.currentThread());
       if (compareAndSet(currentRunner, blocker)) {
@@ -203,11 +203,11 @@ abstract class InterruptibleTask<T extends @Nullable Object>
         // Some of this is fixed in jdk11 (see https://bugs.openjdk.java.net/browse/JDK-8198692) but
         // not all.  See the test cases for examples on how this can happen.
         try {
-          ((Thread) currentRunner).interrupt();
+          thread.interrupt();
         } finally {
           Runnable prev = getAndSet(DONE);
           if (prev == PARKED) {
-            LockSupport.unpark((Thread) currentRunner);
+            LockSupport.unpark(thread);
           }
         }
       }
@@ -254,9 +254,9 @@ abstract class InterruptibleTask<T extends @Nullable Object>
       result = "running=[DONE]";
     } else if (state instanceof Blocker) {
       result = "running=[INTERRUPTED]";
-    } else if (state instanceof Thread) {
+    } else if (state instanceof Thread thread) {
       // getName is final on Thread, no need to worry about exceptions
-      result = "running=[RUNNING ON " + ((Thread) state).getName() + "]";
+      result = "running=[RUNNING ON " + thread.getName() + "]";
     } else {
       result = "running=[NOT STARTED YET]";
     }

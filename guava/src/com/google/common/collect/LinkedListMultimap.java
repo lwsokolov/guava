@@ -891,5 +891,6 @@ public class LinkedListMultimap<K extends @Nullable Object, V extends @Nullable 
 
   @GwtIncompatible // java serialization not supported
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -660,5 +660,6 @@ public final class Stats implements Serializable {
         buffer.getDouble());
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

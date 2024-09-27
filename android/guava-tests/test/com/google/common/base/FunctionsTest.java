@@ -50,7 +50,7 @@ public class FunctionsTest extends TestCase {
 
   public void testIdentity_notSame() {
     Function<Long, Long> identity = Functions.identity();
-    assertNotSame(new Long(135135L), identity.apply(new Long(135135L)));
+    assertNotSame(Long.valueOf(135135L), identity.apply(Long.valueOf(135135L)));
   }
 
   @J2ktIncompatible

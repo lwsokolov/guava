@@ -737,7 +737,7 @@ public class IntMathTest extends TestCase {
     BigInteger bigX = BigInteger.valueOf(x);
     BigInteger bigY = BigInteger.valueOf(y);
     BigDecimal bigMean =
-        new BigDecimal(bigX.add(bigY)).divide(BigDecimal.valueOf(2), BigDecimal.ROUND_FLOOR);
+        new BigDecimal(bigX.add(bigY)).divide(BigDecimal.valueOf(2), RoundingMode.FLOOR);
     // parseInt blows up on overflow as opposed to intValue() which does not.
     return Integer.parseInt(bigMean.toString());
   }

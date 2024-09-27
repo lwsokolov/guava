@@ -352,5 +352,6 @@ abstract class AbstractMapBasedMultiset<E extends @Nullable Object> extends Abst
 
   @GwtIncompatible // not needed in emulated source.
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = -2250766705698539974L;
 }

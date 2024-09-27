@@ -58,8 +58,7 @@ final class LexicographicalOrdering<T extends @Nullable Object> extends Ordering
     if (object == this) {
       return true;
     }
-    if (object instanceof LexicographicalOrdering) {
-      LexicographicalOrdering<?> that = (LexicographicalOrdering<?>) object;
+    if (object instanceof LexicographicalOrdering<?> that) {
       return this.elementOrder.equals(that.elementOrder);
     }
     return false;
@@ -75,5 +74,6 @@ final class LexicographicalOrdering<T extends @Nullable Object> extends Ordering
     return elementOrder + ".lexicographical()";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

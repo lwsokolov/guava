@@ -129,11 +129,11 @@ public final class Throwables {
    */
   public static void throwIfUnchecked(Throwable throwable) {
     checkNotNull(throwable);
-    if (throwable instanceof RuntimeException) {
-      throw (RuntimeException) throwable;
+    if (throwable instanceof RuntimeException exception) {
+      throw exception;
     }
-    if (throwable instanceof Error) {
-      throw (Error) throwable;
+    if (throwable instanceof Error error) {
+      throw error;
     }
   }
 

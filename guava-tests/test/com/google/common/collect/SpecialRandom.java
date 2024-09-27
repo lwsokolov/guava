@@ -50,5 +50,6 @@ public final class SpecialRandom extends Random {
     return hasSeed ? "(seed:" + seed : "(default seed)";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

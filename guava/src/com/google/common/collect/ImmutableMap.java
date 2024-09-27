@@ -491,8 +491,8 @@ public abstract class ImmutableMap<K, V> implements Map<K, V>, Serializable {
      */
     @CanIgnoreReturnValue
     public Builder<K, V> putAll(Iterable<? extends Entry<? extends K, ? extends V>> entries) {
-      if (entries instanceof Collection) {
-        ensureCapacity(size + ((Collection<?>) entries).size());
+      if (entries instanceof Collection<?> collection) {
+        ensureCapacity(size + collection.size());
       }
       for (Entry<? extends K, ? extends V> entry : entries) {
         put(entry);
@@ -691,12 +691,12 @@ public abstract class ImmutableMap<K, V> implements Map<K, V>, Serializable {
       if (!kvMap.isPartialView()) {
         return kvMap;
       }
-    } else if (map instanceof EnumMap) {
+    } else if (map instanceof EnumMap<?,?> enumMap) {
       @SuppressWarnings("unchecked") // safe since map is not writable
       ImmutableMap<K, V> kvMap =
           (ImmutableMap<K, V>)
               copyOfEnumMap(
-                  (EnumMap<?, ? extends V>) map); // hide K (violates bounds) from J2KT, preserve V.
+                  enumMap); // hide K (violates bounds) from J2KT, preserve V.
       return kvMap;
     }
     return copyOf(map.entrySet());
@@ -1310,6 +1310,7 @@ public abstract class ImmutableMap<K, V> implements Map<K, V>, Serializable {
       return new Builder<>(size);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -1328,5 +1329,6 @@ public abstract class ImmutableMap<K, V> implements Map<K, V>, Serializable {
     throw new InvalidObjectException("Use SerializedForm");
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

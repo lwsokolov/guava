@@ -226,8 +226,7 @@ public abstract class Equivalence<T> implements BiPredicate<@Nullable T, @Nullab
       if (obj == this) {
         return true;
       }
-      if (obj instanceof Wrapper) {
-        Wrapper<?> that = (Wrapper<?>) obj; // note: not necessarily a Wrapper<T>
+      if (obj instanceof Wrapper<?> that) { // note: not necessarily a Wrapper<T>
 
         if (this.equivalence.equals(that.equivalence)) {
           /*
@@ -311,8 +310,7 @@ public abstract class Equivalence<T> implements BiPredicate<@Nullable T, @Nullab
       if (this == obj) {
         return true;
       }
-      if (obj instanceof EquivalentToPredicate) {
-        EquivalentToPredicate<?> that = (EquivalentToPredicate<?>) obj;
+      if (obj instanceof EquivalentToPredicate<?> that) {
         return equivalence.equals(that.equivalence) && Objects.equal(target, that.target);
       }
       return false;

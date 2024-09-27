@@ -79,8 +79,7 @@ final class Present<T> extends Optional<T> {
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Present) {
-      Present<?> other = (Present<?>) object;
+    if (object instanceof Present<?> other) {
       return reference.equals(other.reference);
     }
     return false;
@@ -96,5 +95,6 @@ final class Present<T> extends Optional<T> {
     return "Optional.of(" + reference + ")";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

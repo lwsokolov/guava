@@ -93,8 +93,7 @@ abstract class DummyProxy {
 
     @Override
     public boolean equals(@Nullable Object obj) {
-      if (obj instanceof DummyHandler) {
-        DummyHandler that = (DummyHandler) obj;
+      if (obj instanceof DummyHandler that) {
         return identity().equals(that.identity());
       } else {
         return false;

@@ -147,5 +147,6 @@ abstract class AbstractSortedSetMultimap<K extends @Nullable Object, V extends @
     return super.values();
   }
 
+  @Serial
   private static final long serialVersionUID = 430848587173315748L;
 }

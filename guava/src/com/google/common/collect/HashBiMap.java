@@ -809,5 +809,6 @@ public final class HashBiMap<K extends @Nullable Object, V extends @Nullable Obj
 
   @GwtIncompatible // Not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -50,8 +50,7 @@ final class ExplicitOrdering<T> extends Ordering<T> implements Serializable {
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof ExplicitOrdering) {
-      ExplicitOrdering<?> that = (ExplicitOrdering<?>) object;
+    if (object instanceof ExplicitOrdering<?> that) {
       return this.rankMap.equals(that.rankMap);
     }
     return false;
@@ -67,5 +66,6 @@ final class ExplicitOrdering<T> extends Ordering<T> implements Serializable {
     return "Ordering.explicit(" + rankMap.keySet() + ")";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

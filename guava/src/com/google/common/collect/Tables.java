@@ -177,8 +177,7 @@ public final class Tables {
       if (obj == this) {
         return true;
       }
-      if (obj instanceof Cell) {
-        Cell<?, ?, ?> other = (Cell<?, ?, ?>) obj;
+      if (obj instanceof Cell<?,?,?> other) {
         return Objects.equal(getRowKey(), other.getRowKey())
             && Objects.equal(getColumnKey(), other.getColumnKey())
             && Objects.equal(getValue(), other.getValue());
@@ -747,8 +746,7 @@ public final class Tables {
   static boolean equalsImpl(Table<?, ?, ?> table, @CheckForNull Object obj) {
     if (obj == table) {
       return true;
-    } else if (obj instanceof Table) {
-      Table<?, ?, ?> that = (Table<?, ?, ?>) obj;
+    } else if (obj instanceof Table<?,?,?> that) {
       return table.cellSet().equals(that.cellSet());
     } else {
       return false;

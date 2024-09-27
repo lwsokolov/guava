@@ -349,8 +349,7 @@ public final class TreeRangeMap<K extends Comparable, V> implements RangeMap<K, 
     @Override
     @CheckForNull
     public V get(@CheckForNull Object key) {
-      if (key instanceof Range) {
-        Range<?> range = (Range<?>) key;
+      if (key instanceof Range<?> range) {
         RangeMapEntry<K, V> rangeMapEntry = entriesByLowerBound.get(range.lowerBound);
         if (rangeMapEntry != null && rangeMapEntry.getKey().equals(range)) {
           return rangeMapEntry.getValue();
@@ -626,8 +625,7 @@ public final class TreeRangeMap<K extends Comparable, V> implements RangeMap<K, 
 
     @Override
     public boolean equals(@CheckForNull Object o) {
-      if (o instanceof RangeMap) {
-        RangeMap<?, ?> rangeMap = (RangeMap<?, ?>) o;
+      if (o instanceof RangeMap<?,?> rangeMap) {
         return asMapOfRanges().equals(rangeMap.asMapOfRanges());
       }
       return false;
@@ -808,8 +806,7 @@ public final class TreeRangeMap<K extends Comparable, V> implements RangeMap<K, 
 
   @Override
   public boolean equals(@CheckForNull Object o) {
-    if (o instanceof RangeMap) {
-      RangeMap<?, ?> rangeMap = (RangeMap<?, ?>) o;
+    if (o instanceof RangeMap<?,?> rangeMap) {
       return asMapOfRanges().equals(rangeMap.asMapOfRanges());
     }
     return false;

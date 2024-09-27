@@ -227,8 +227,7 @@ final class RegularContiguousSet<C extends Comparable> extends ContiguousSet<C> 
   public boolean equals(@CheckForNull Object object) {
     if (object == this) {
       return true;
-    } else if (object instanceof RegularContiguousSet) {
-      RegularContiguousSet<?> that = (RegularContiguousSet<?>) object;
+    } else if (object instanceof RegularContiguousSet<?> that) {
       if (this.domain.equals(that.domain)) {
         return this.first().equals(that.first()) && this.last().equals(that.last());
       }
@@ -271,5 +270,6 @@ final class RegularContiguousSet<C extends Comparable> extends ContiguousSet<C> 
     throw new InvalidObjectException("Use SerializedForm");
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -59,8 +59,7 @@ abstract class RegularImmutableTable<R, C, V> extends ImmutableTable<R, C, V> {
 
     @Override
     public boolean contains(@CheckForNull Object object) {
-      if (object instanceof Cell) {
-        Cell<?, ?, ?> cell = (Cell<?, ?, ?>) object;
+      if (object instanceof Cell<?,?,?> cell) {
         Object value = RegularImmutableTable.this.get(cell.getRowKey(), cell.getColumnKey());
         return value != null && value.equals(cell.getValue());
       }

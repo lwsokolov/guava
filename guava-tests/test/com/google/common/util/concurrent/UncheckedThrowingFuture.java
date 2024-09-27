@@ -74,10 +74,10 @@ final class UncheckedThrowingFuture<V> extends AbstractFuture<V> {
     Throwable wrapper = e.getCause();
     if (wrapper instanceof WrapperException) {
       Throwable cause = wrapper.getCause();
-      if (cause instanceof RuntimeException) {
-        throw (RuntimeException) cause;
-      } else if (cause instanceof Error) {
-        throw (Error) cause;
+      if (cause instanceof RuntimeException exception) {
+        throw exception;
+      } else if (cause instanceof Error error) {
+        throw error;
       }
     }
     throw e;

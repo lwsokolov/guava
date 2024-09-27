@@ -134,8 +134,7 @@ public final class Enums {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof StringConverter) {
-        StringConverter<?> that = (StringConverter<?>) object;
+      if (object instanceof StringConverter<?> that) {
         return this.enumClass.equals(that.enumClass);
       }
       return false;

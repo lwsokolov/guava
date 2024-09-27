@@ -459,8 +459,7 @@ class CacheTesting {
     assertEquals(ImmutableMap.of().hashCode(), map.hashCode());
     assertEquals(ImmutableMap.of().toString(), map.toString());
 
-    if (map instanceof LocalCache) {
-      LocalCache<?, ?> cchm = (LocalCache<?, ?>) map;
+    if (map instanceof LocalCache<?,?> cchm) {
 
       checkValidState(cchm);
       assertTrue(cchm.isEmpty());

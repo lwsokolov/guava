@@ -556,5 +556,6 @@ public class ImmutableListMultimap<K, V> extends ImmutableMultimap<K, V>
 
   @GwtIncompatible // Not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -993,8 +993,8 @@ public final class InetAddresses {
    * @since 7.0
    */
   public static Inet4Address getCoercedIPv4Address(InetAddress ip) {
-    if (ip instanceof Inet4Address) {
-      return (Inet4Address) ip;
+    if (ip instanceof Inet4Address address) {
+      return address;
     }
 
     // Special cases:

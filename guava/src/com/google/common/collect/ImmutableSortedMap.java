@@ -453,8 +453,7 @@ public final class ImmutableSortedMap<K, V> extends ImmutableMap<K, V>
   private static <K, V> ImmutableSortedMap<K, V> copyOfInternal(
       Map<? extends K, ? extends V> map, Comparator<? super K> comparator) {
     boolean sameComparator = false;
-    if (map instanceof SortedMap) {
-      SortedMap<?, ?> sortedMap = (SortedMap<?, ?>) map;
+    if (map instanceof SortedMap<?,?> sortedMap) {
       Comparator<?> comparator2 = sortedMap.comparator();
       sameComparator =
           (comparator2 == null) ? comparator == NATURAL_ORDER : comparator.equals(comparator2);
@@ -1159,6 +1158,7 @@ public final class ImmutableSortedMap<K, V> extends ImmutableMap<K, V>
       return new Builder<>(comparator);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -1175,6 +1175,7 @@ public final class ImmutableSortedMap<K, V> extends ImmutableMap<K, V>
 
   // This class is never actually serialized directly, but we have to make the
   // warning go away (and suppressing would suppress for all nested classes too)
+  @Serial
   private static final long serialVersionUID = 0;
 
   /**

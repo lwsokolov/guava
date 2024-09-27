@@ -14,6 +14,9 @@
     separate artifact to allow for the testlibs to depend on guava
     itself.
   </description>
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
@@ -55,6 +58,12 @@
       <groupId>com.google.truth.extensions</groupId>
       <artifactId>truth-java8-extension</artifactId>
       <version>${truth.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>1.3.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>

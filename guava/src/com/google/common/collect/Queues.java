@@ -77,8 +77,8 @@ public final class Queues {
    * @since 12.0
    */
   public static <E> ArrayDeque<E> newArrayDeque(Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new ArrayDeque<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new ArrayDeque<>(collection);
     }
     ArrayDeque<E> deque = new ArrayDeque<>();
     Iterables.addAll(deque, elements);
@@ -102,8 +102,8 @@ public final class Queues {
   @GwtIncompatible // ConcurrentLinkedQueue
   public static <E> ConcurrentLinkedQueue<E> newConcurrentLinkedQueue(
       Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new ConcurrentLinkedQueue<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new ConcurrentLinkedQueue<>(collection);
     }
     ConcurrentLinkedQueue<E> queue = new ConcurrentLinkedQueue<>();
     Iterables.addAll(queue, elements);
@@ -145,8 +145,8 @@ public final class Queues {
   @J2ktIncompatible
   @GwtIncompatible // LinkedBlockingDeque
   public static <E> LinkedBlockingDeque<E> newLinkedBlockingDeque(Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new LinkedBlockingDeque<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new LinkedBlockingDeque<>(collection);
     }
     LinkedBlockingDeque<E> deque = new LinkedBlockingDeque<>();
     Iterables.addAll(deque, elements);
@@ -184,8 +184,8 @@ public final class Queues {
   @J2ktIncompatible
   @GwtIncompatible // LinkedBlockingQueue
   public static <E> LinkedBlockingQueue<E> newLinkedBlockingQueue(Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new LinkedBlockingQueue<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new LinkedBlockingQueue<>(collection);
     }
     LinkedBlockingQueue<E> queue = new LinkedBlockingQueue<>();
     Iterables.addAll(queue, elements);
@@ -224,8 +224,8 @@ public final class Queues {
   @GwtIncompatible // PriorityBlockingQueue
   public static <E extends Comparable> PriorityBlockingQueue<E> newPriorityBlockingQueue(
       Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new PriorityBlockingQueue<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new PriorityBlockingQueue<>(collection);
     }
     PriorityBlockingQueue<E> queue = new PriorityBlockingQueue<>();
     Iterables.addAll(queue, elements);
@@ -258,8 +258,8 @@ public final class Queues {
   @SuppressWarnings("rawtypes") // https://github.com/google/guava/issues/989
   public static <E extends Comparable> PriorityQueue<E> newPriorityQueue(
       Iterable<? extends E> elements) {
-    if (elements instanceof Collection) {
-      return new PriorityQueue<>((Collection<? extends E>) elements);
+    if (elements instanceof Collection<?> collection) {
+      return new PriorityQueue<>(collection);
     }
     PriorityQueue<E> queue = new PriorityQueue<>();
     Iterables.addAll(queue, elements);

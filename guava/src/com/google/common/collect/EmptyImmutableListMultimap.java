@@ -48,5 +48,6 @@ class EmptyImmutableListMultimap extends ImmutableListMultimap<Object, Object> {
     return INSTANCE; // preserve singleton property
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

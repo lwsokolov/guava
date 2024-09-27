@@ -316,5 +316,6 @@ public final class PairedStats implements Serializable {
     return new PairedStats(xStats, yStats, sumOfProductsOfDeltas);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

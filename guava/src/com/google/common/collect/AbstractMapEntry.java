@@ -49,8 +49,7 @@ abstract class AbstractMapEntry<K extends @Nullable Object, V extends @Nullable 
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Entry) {
-      Entry<?, ?> that = (Entry<?, ?>) object;
+    if (object instanceof Entry<?,?> that) {
       return Objects.equal(this.getKey(), that.getKey())
           && Objects.equal(this.getValue(), that.getValue());
     }

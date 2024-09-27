@@ -89,10 +89,10 @@ final class CompactHashing {
   }
 
   static void tableClear(Object table) {
-    if (table instanceof byte[]) {
-      Arrays.fill((byte[]) table, (byte) 0);
-    } else if (table instanceof short[]) {
-      Arrays.fill((short[]) table, (short) 0);
+    if (table instanceof byte[] bytes) {
+      Arrays.fill(bytes, (byte) 0);
+    } else if (table instanceof short[] shorts) {
+      Arrays.fill(shorts, (short) 0);
     } else {
       Arrays.fill((int[]) table, 0);
     }
@@ -104,10 +104,10 @@ final class CompactHashing {
    * is unsigned, so the range of possible returned values is 0–255 or 0–65535, respectively.
    */
   static int tableGet(Object table, int index) {
-    if (table instanceof byte[]) {
-      return ((byte[]) table)[index] & BYTE_MASK; // unsigned read
-    } else if (table instanceof short[]) {
-      return ((short[]) table)[index] & SHORT_MASK; // unsigned read
+    if (table instanceof byte[] bytes) {
+      return bytes[index] & BYTE_MASK; // unsigned read
+    } else if (table instanceof short[] shorts) {
+      return shorts[index] & SHORT_MASK; // unsigned read
     } else {
       return ((int[]) table)[index];
     }
@@ -121,10 +121,10 @@ final class CompactHashing {
    * should have {@code 0 ≤ entry ≤ 65535}. It is the caller's responsibility to ensure this.
    */
   static void tableSet(Object table, int index, int entry) {
-    if (table instanceof byte[]) {
-      ((byte[]) table)[index] = (byte) entry; // unsigned write
-    } else if (table instanceof short[]) {
-      ((short[]) table)[index] = (short) entry; // unsigned write
+    if (table instanceof byte[] bytes) {
+      bytes[index] = (byte) entry; // unsigned write
+    } else if (table instanceof short[] shorts) {
+      shorts[index] = (short) entry; // unsigned write
     } else {
       ((int[]) table)[index] = entry;
     }

@@ -1847,8 +1847,7 @@ public final class Multimaps {
 
     @Override
     public boolean contains(@CheckForNull Object o) {
-      if (o instanceof Map.Entry) {
-        Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+      if (o instanceof Map.Entry<?,?> entry) {
         return multimap().containsEntry(entry.getKey(), entry.getValue());
       }
       return false;
@@ -1856,8 +1855,7 @@ public final class Multimaps {
 
     @Override
     public boolean remove(@CheckForNull Object o) {
-      if (o instanceof Map.Entry) {
-        Map.Entry<?, ?> entry = (Map.Entry<?, ?>) o;
+      if (o instanceof Map.Entry<?,?> entry) {
         return multimap().remove(entry.getKey(), entry.getValue());
       }
       return false;
@@ -2245,8 +2243,7 @@ public final class Multimaps {
     if (object == multimap) {
       return true;
     }
-    if (object instanceof Multimap) {
-      Multimap<?, ?> that = (Multimap<?, ?>) object;
+    if (object instanceof Multimap<?,?> that) {
       return multimap.asMap().equals(that.asMap());
     }
     return false;

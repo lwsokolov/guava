@@ -34,8 +34,7 @@ public class UnhashableObject implements Comparable<UnhashableObject> {
 
   @Override
   public boolean equals(@Nullable Object object) {
-    if (object instanceof UnhashableObject) {
-      UnhashableObject that = (UnhashableObject) object;
+    if (object instanceof UnhashableObject that) {
       return this.value == that.value;
     }
     return false;

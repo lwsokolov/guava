@@ -215,7 +215,7 @@ public abstract class AbstractNetwork<N, E> implements Network<N, E> {
       case 1:
         return edgesConnecting.iterator().next();
       default:
-        throw new IllegalArgumentException(String.format(MULTIPLE_EDGES_CONNECTING, nodeU, nodeV));
+        throw new IllegalArgumentException(MULTIPLE_EDGES_CONNECTING.formatted(nodeU, nodeV));
     }
   }
 
@@ -298,7 +298,7 @@ public abstract class AbstractNetwork<N, E> implements Network<N, E> {
    */
   protected final <T> Set<T> edgeInvalidatableSet(Set<T> set, E edge) {
     return InvalidatableSet.of(
-        set, () -> edges().contains(edge), () -> String.format(EDGE_REMOVED_FROM_GRAPH, edge));
+        set, () -> edges().contains(edge), () -> EDGE_REMOVED_FROM_GRAPH.formatted(edge));
   }
 
   /**
@@ -309,7 +309,7 @@ public abstract class AbstractNetwork<N, E> implements Network<N, E> {
    */
   protected final <T> Set<T> nodeInvalidatableSet(Set<T> set, N node) {
     return InvalidatableSet.of(
-        set, () -> nodes().contains(node), () -> String.format(NODE_REMOVED_FROM_GRAPH, node));
+        set, () -> nodes().contains(node), () -> NODE_REMOVED_FROM_GRAPH.formatted(node));
   }
 
   /**
@@ -322,7 +322,7 @@ public abstract class AbstractNetwork<N, E> implements Network<N, E> {
     return InvalidatableSet.of(
         set,
         () -> nodes().contains(nodeU) && nodes().contains(nodeV),
-        () -> String.format(NODE_PAIR_REMOVED_FROM_GRAPH, nodeU, nodeV));
+        () -> NODE_PAIR_REMOVED_FROM_GRAPH.formatted(nodeU, nodeV));
   }
 
   private static <N, E> Map<E, EndpointPair<N>> edgeIncidentNodesMap(final Network<N, E> network) {

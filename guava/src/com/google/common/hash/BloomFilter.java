@@ -283,8 +283,7 @@ public final class BloomFilter<T extends @Nullable Object> implements Predicate<
     if (object == this) {
       return true;
     }
-    if (object instanceof BloomFilter) {
-      BloomFilter<?> that = (BloomFilter<?>) object;
+    if (object instanceof BloomFilter<?> that) {
       return this.numHashFunctions == that.numHashFunctions
           && this.funnel.equals(that.funnel)
           && this.bits.equals(that.bits)
@@ -561,6 +560,7 @@ public final class BloomFilter<T extends @Nullable Object> implements Predicate<
       return new BloomFilter<T>(new LockFreeBitArray(data), numHashFunctions, funnel, strategy);
     }
 
+    @Serial
     private static final long serialVersionUID = 1;
   }
 
@@ -637,5 +637,6 @@ public final class BloomFilter<T extends @Nullable Object> implements Predicate<
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

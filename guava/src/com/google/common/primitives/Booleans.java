@@ -351,8 +351,8 @@ public final class Booleans {
    * @throws NullPointerException if {@code collection} or any of its elements is null
    */
   public static boolean[] toArray(Collection<Boolean> collection) {
-    if (collection instanceof BooleanArrayAsList) {
-      return ((BooleanArrayAsList) collection).toBooleanArray();
+    if (collection instanceof BooleanArrayAsList list) {
+      return list.toBooleanArray();
     }
 
     Object[] boxedArray = collection.toArray();
@@ -421,15 +421,15 @@ public final class Booleans {
     @Override
     public boolean contains(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      return (target instanceof Boolean)
-          && Booleans.indexOf(array, (Boolean) target, start, end) != -1;
+      return (target instanceof Boolean b)
+          && Booleans.indexOf(array, b, start, end) != -1;
     }
 
     @Override
     public int indexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Boolean) {
-        int i = Booleans.indexOf(array, (Boolean) target, start, end);
+      if (target instanceof Boolean boolean1) {
+        int i = Booleans.indexOf(array, boolean1, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -440,8 +440,8 @@ public final class Booleans {
     @Override
     public int lastIndexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Boolean) {
-        int i = Booleans.lastIndexOf(array, (Boolean) target, start, end);
+      if (target instanceof Boolean boolean1) {
+        int i = Booleans.lastIndexOf(array, boolean1, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -473,8 +473,7 @@ public final class Booleans {
       if (object == this) {
         return true;
       }
-      if (object instanceof BooleanArrayAsList) {
-        BooleanArrayAsList that = (BooleanArrayAsList) object;
+      if (object instanceof BooleanArrayAsList that) {
         int size = size();
         if (that.size() != size) {
           return false;

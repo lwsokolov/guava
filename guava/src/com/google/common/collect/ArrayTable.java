@@ -823,5 +823,6 @@ public final class ArrayTable<R, C, V> extends AbstractTable<R, C, @Nullable V>
     return CollectSpliterators.<@Nullable V>indexed(size(), Spliterator.ORDERED, this::getValue);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

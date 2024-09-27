@@ -1115,9 +1115,9 @@ public final class Futures extends GwtFuturesCatchingSpecialization {
 
     @Override
     public void run() {
-      if (future instanceof InternalFutureFailureAccess) {
+      if (future instanceof InternalFutureFailureAccess access) {
         Throwable failure =
-            InternalFutures.tryInternalFastPathGetFailure((InternalFutureFailureAccess) future);
+            InternalFutures.tryInternalFastPathGetFailure(access);
         if (failure != null) {
           callback.onFailure(failure);
           return;
@@ -1383,8 +1383,8 @@ public final class Futures extends GwtFuturesCatchingSpecialization {
   }
 
   private static void wrapAndThrowUnchecked(Throwable cause) {
-    if (cause instanceof Error) {
-      throw new ExecutionError((Error) cause);
+    if (cause instanceof Error error) {
+      throw new ExecutionError(error);
     }
     /*
      * It's an Exception. (Or it's a non-Error, non-Exception Throwable. From my survey of such

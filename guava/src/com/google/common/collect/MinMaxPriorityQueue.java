@@ -954,8 +954,8 @@ public final class MinMaxPriorityQueue<E> extends AbstractQueue<E> {
             : configuredExpectedSize;
 
     // Enlarge to contain initial contents
-    if (initialContents instanceof Collection) {
-      int initialSize = ((Collection<?>) initialContents).size();
+    if (initialContents instanceof Collection<?> collection) {
+      int initialSize = collection.size();
       result = Math.max(result, initialSize);
     }
 

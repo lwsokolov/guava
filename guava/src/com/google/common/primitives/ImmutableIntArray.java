@@ -486,12 +486,12 @@ public final class ImmutableIntArray implements Serializable {
 
     @Override
     public int indexOf(@CheckForNull Object target) {
-      return target instanceof Integer ? parent.indexOf((Integer) target) : -1;
+      return target instanceof Integer i ? parent.indexOf(i) : -1;
     }
 
     @Override
     public int lastIndexOf(@CheckForNull Object target) {
-      return target instanceof Integer ? parent.lastIndexOf((Integer) target) : -1;
+      return target instanceof Integer i ? parent.lastIndexOf(i) : -1;
     }
 
     @Override
@@ -507,8 +507,7 @@ public final class ImmutableIntArray implements Serializable {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof AsList) {
-        AsList that = (AsList) object;
+      if (object instanceof AsList that) {
         return this.parent.equals(that.parent);
       }
       // We could delegate to super now but it would still box too much

@@ -89,5 +89,6 @@ public class UncheckedExecutionException extends RuntimeException {
     super(cause);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

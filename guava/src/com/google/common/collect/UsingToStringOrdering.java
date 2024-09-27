@@ -42,5 +42,6 @@ final class UsingToStringOrdering extends Ordering<Object> implements Serializab
 
   private UsingToStringOrdering() {}
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

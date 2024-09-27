@@ -611,8 +611,8 @@ public final class Ints extends IntsMethodsForWeb {
    * @since 1.0 (parameter was {@code Collection<Integer>} before 12.0)
    */
   public static int[] toArray(Collection<? extends Number> collection) {
-    if (collection instanceof IntArrayAsList) {
-      return ((IntArrayAsList) collection).toIntArray();
+    if (collection instanceof IntArrayAsList list) {
+      return list.toIntArray();
     }
 
     Object[] boxedArray = collection.toArray();
@@ -690,14 +690,14 @@ public final class Ints extends IntsMethodsForWeb {
     @Override
     public boolean contains(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      return (target instanceof Integer) && Ints.indexOf(array, (Integer) target, start, end) != -1;
+      return (target instanceof Integer i) && Ints.indexOf(array, i, start, end) != -1;
     }
 
     @Override
     public int indexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Integer) {
-        int i = Ints.indexOf(array, (Integer) target, start, end);
+      if (target instanceof Integer integer) {
+        int i = Ints.indexOf(array, integer, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -708,8 +708,8 @@ public final class Ints extends IntsMethodsForWeb {
     @Override
     public int lastIndexOf(@CheckForNull Object target) {
       // Overridden to prevent a ton of boxing
-      if (target instanceof Integer) {
-        int i = Ints.lastIndexOf(array, (Integer) target, start, end);
+      if (target instanceof Integer integer) {
+        int i = Ints.lastIndexOf(array, integer, start, end);
         if (i >= 0) {
           return i - start;
         }
@@ -741,8 +741,7 @@ public final class Ints extends IntsMethodsForWeb {
       if (object == this) {
         return true;
       }
-      if (object instanceof IntArrayAsList) {
-        IntArrayAsList that = (IntArrayAsList) object;
+      if (object instanceof IntArrayAsList that) {
         int size = size();
         if (that.size() != size) {
           return false;

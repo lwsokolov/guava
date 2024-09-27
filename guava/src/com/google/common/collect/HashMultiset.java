@@ -96,5 +96,6 @@ public final class HashMultiset<E extends @Nullable Object> extends AbstractMapB
 
   @GwtIncompatible // Not needed in emulated source.
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -665,8 +665,7 @@ public final class Maps {
       if (object == this) {
         return true;
       }
-      if (object instanceof MapDifference) {
-        MapDifference<?, ?> other = (MapDifference<?, ?>) object;
+      if (object instanceof MapDifference<?,?> other) {
         return entriesOnlyOnLeft().equals(other.entriesOnlyOnLeft())
             && entriesOnlyOnRight().equals(other.entriesOnlyOnRight())
             && entriesInCommon().equals(other.entriesInCommon())
@@ -730,8 +729,7 @@ public final class Maps {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof MapDifference.ValueDifference) {
-        MapDifference.ValueDifference<?> that = (MapDifference.ValueDifference<?>) object;
+      if (object instanceof MapDifference.ValueDifference<?> that) {
         return Objects.equal(this.left, that.leftValue())
             && Objects.equal(this.right, that.rightValue());
       }
@@ -1355,11 +1353,11 @@ public final class Maps {
   @CanIgnoreReturnValue
   public static <K, V> ImmutableMap<K, V> uniqueIndex(
       Iterable<V> values, Function<? super V, K> keyFunction) {
-    if (values instanceof Collection) {
+    if (values instanceof Collection<?> collection) {
       return uniqueIndex(
           values.iterator(),
           keyFunction,
-          ImmutableMap.builderWithExpectedSize(((Collection<?>) values).size()));
+          ImmutableMap.builderWithExpectedSize(collection.size()));
     }
     return uniqueIndex(values.iterator(), keyFunction);
   }
@@ -1636,8 +1634,7 @@ public final class Maps {
 
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof BiMapConverter) {
-        BiMapConverter<?, ?> that = (BiMapConverter<?, ?>) object;
+      if (object instanceof BiMapConverter<?,?> that) {
         return this.bimap.equals(that.bimap);
       }
       return false;
@@ -4011,8 +4008,7 @@ public final class Maps {
   static boolean equalsImpl(Map<?, ?> map, @CheckForNull Object object) {
     if (map == object) {
       return true;
-    } else if (object instanceof Map) {
-      Map<?, ?> o = (Map<?, ?>) object;
+    } else if (object instanceof Map<?,?> o) {
       return map.entrySet().equals(o.entrySet());
     }
     return false;
@@ -4348,8 +4344,7 @@ public final class Maps {
 
     @Override
     public boolean contains(@CheckForNull Object o) {
-      if (o instanceof Entry) {
-        Entry<?, ?> entry = (Entry<?, ?>) o;
+      if (o instanceof Entry<?,?> entry) {
         Object key = entry.getKey();
         V value = Maps.safeGet(map(), key);
         return Objects.equal(value, entry.getValue()) && (value != null || map().containsKey(key));
@@ -4368,8 +4363,7 @@ public final class Maps {
        * `o instanceof Entry` is guaranteed by `contains`, but we check it here to satisfy our
        * nullness checker.
        */
-      if (contains(o) && o instanceof Entry) {
-        Entry<?, ?> entry = (Entry<?, ?>) o;
+      if (contains(o) && o instanceof Entry<?,?> entry) {
         return map().keySet().remove(entry.getKey());
       }
       return false;
@@ -4397,8 +4391,7 @@ public final class Maps {
            * `o instanceof Entry` is guaranteed by `contains`, but we check it here to satisfy our
            * nullness checker.
            */
-          if (contains(o) && o instanceof Entry) {
-            Entry<?, ?> entry = (Entry<?, ?>) o;
+          if (contains(o) && o instanceof Entry<?,?> entry) {
             keys.add(entry.getKey());
           }
         }

@@ -115,6 +115,7 @@ final class MessageDigestHashFunction extends AbstractHashFunction implements Se
       return new MessageDigestHashFunction(algorithmName, bytes, toString);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 

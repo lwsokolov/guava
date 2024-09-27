@@ -396,8 +396,8 @@ public final class Multisets {
    * otherwise the default value of 11 is returned.
    */
   static int inferDistinctElements(Iterable<?> elements) {
-    if (elements instanceof Multiset) {
-      return ((Multiset<?>) elements).elementSet().size();
+    if (elements instanceof Multiset<?> multiset) {
+      return multiset.elementSet().size();
     }
     return 11; // initial capacity will be rounded up to 16
   }
@@ -773,8 +773,8 @@ public final class Multisets {
   @CanIgnoreReturnValue
   public static boolean removeOccurrences(
       Multiset<?> multisetToModify, Iterable<?> occurrencesToRemove) {
-    if (occurrencesToRemove instanceof Multiset) {
-      return removeOccurrences(multisetToModify, (Multiset<?>) occurrencesToRemove);
+    if (occurrencesToRemove instanceof Multiset<?> multiset) {
+      return removeOccurrences(multisetToModify, multiset);
     } else {
       checkNotNull(multisetToModify);
       checkNotNull(occurrencesToRemove);
@@ -841,8 +841,7 @@ public final class Multisets {
      */
     @Override
     public boolean equals(@CheckForNull Object object) {
-      if (object instanceof Multiset.Entry) {
-        Multiset.Entry<?> that = (Multiset.Entry<?>) object;
+      if (object instanceof Multiset.Entry<?> that) {
         return this.getCount() == that.getCount()
             && Objects.equal(this.getElement(), that.getElement());
       }
@@ -878,8 +877,7 @@ public final class Multisets {
     if (object == multiset) {
       return true;
     }
-    if (object instanceof Multiset) {
-      Multiset<?> that = (Multiset<?>) object;
+    if (object instanceof Multiset<?> that) {
       /*
        * We can't simply check whether the entry sets are equal, since that
        * approach fails when a TreeMultiset has a comparator that returns 0
@@ -926,8 +924,8 @@ public final class Multisets {
   /** An implementation of {@link Multiset#removeAll}. */
   static boolean removeAllImpl(Multiset<?> self, Collection<?> elementsToRemove) {
     Collection<?> collection =
-        (elementsToRemove instanceof Multiset)
-            ? ((Multiset<?>) elementsToRemove).elementSet()
+        (elementsToRemove instanceof Multiset<?> m)
+            ? m.elementSet()
             : elementsToRemove;
 
     return self.elementSet().removeAll(collection);
@@ -937,8 +935,8 @@ public final class Multisets {
   static boolean retainAllImpl(Multiset<?> self, Collection<?> elementsToRetain) {
     checkNotNull(elementsToRetain);
     Collection<?> collection =
-        (elementsToRetain instanceof Multiset)
-            ? ((Multiset<?>) elementsToRetain).elementSet()
+        (elementsToRetain instanceof Multiset<?> m)
+            ? m.elementSet()
             : elementsToRetain;
 
     return self.elementSet().retainAll(collection);
@@ -1029,8 +1027,7 @@ public final class Multisets {
 
     @Override
     public boolean contains(@CheckForNull Object o) {
-      if (o instanceof Entry) {
-        Entry<?> entry = (Entry<?>) o;
+      if (o instanceof Entry<?> entry) {
         if (entry.getCount() <= 0) {
           return false;
         }
@@ -1042,8 +1039,7 @@ public final class Multisets {
 
     @Override
     public boolean remove(@CheckForNull Object object) {
-      if (object instanceof Multiset.Entry) {
-        Entry<?> entry = (Entry<?>) object;
+      if (object instanceof Multiset.Entry<?> entry) {
         Object element = entry.getElement();
         int entryCount = entry.getCount();
         if (entryCount != 0) {

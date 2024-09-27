@@ -214,8 +214,7 @@ class CacheBuilderFactory {
 
     @Override
     public boolean equals(@Nullable Object o) {
-      if (o instanceof DurationSpec) {
-        DurationSpec that = (DurationSpec) o;
+      if (o instanceof DurationSpec that) {
         return unit.toNanos(duration) == that.unit.toNanos(that.duration);
       }
       return false;

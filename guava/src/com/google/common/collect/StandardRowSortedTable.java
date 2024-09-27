@@ -142,5 +142,6 @@ class StandardRowSortedTable<R, C, V> extends StandardTable<R, C, V>
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

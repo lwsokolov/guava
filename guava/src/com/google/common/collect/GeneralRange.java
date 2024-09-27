@@ -242,8 +242,7 @@ final class GeneralRange<T extends @Nullable Object> implements Serializable {
 
   @Override
   public boolean equals(@CheckForNull Object obj) {
-    if (obj instanceof GeneralRange) {
-      GeneralRange<?> r = (GeneralRange<?>) obj;
+    if (obj instanceof GeneralRange<?> r) {
       return comparator.equals(r.comparator)
           && hasLowerBound == r.hasLowerBound
           && hasUpperBound == r.hasUpperBound

@@ -430,8 +430,8 @@ public final class Ascii {
    * @since 14.0
    */
   public static String toLowerCase(CharSequence chars) {
-    if (chars instanceof String) {
-      return toLowerCase((String) chars);
+    if (chars instanceof String string) {
+      return toLowerCase(string);
     }
     char[] newChars = new char[chars.length()];
     for (int i = 0; i < newChars.length; i++) {
@@ -478,8 +478,8 @@ public final class Ascii {
    * @since 14.0
    */
   public static String toUpperCase(CharSequence chars) {
-    if (chars instanceof String) {
-      return toUpperCase((String) chars);
+    if (chars instanceof String string) {
+      return toUpperCase(string);
     }
     char[] newChars = new char[chars.length()];
     for (int i = 0; i < newChars.length; i++) {

@@ -141,7 +141,7 @@ public class AtomicDouble extends Number implements Serializable {
    * @return {@code true} if successful
    */
   public final boolean weakCompareAndSet(double expect, double update) {
-    return value.weakCompareAndSet(doubleToRawLongBits(expect), doubleToRawLongBits(update));
+    return value.weakCompareAndSetPlain(doubleToRawLongBits(expect), doubleToRawLongBits(update));
   }
 
   /**

@@ -663,5 +663,6 @@ public final class LinkedHashMultimap<K extends @Nullable Object, V extends @Nul
 
   @GwtIncompatible // java serialization not supported
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 1;
 }

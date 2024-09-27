@@ -1104,5 +1104,6 @@ public final class TreeMultiset<E extends @Nullable Object> extends AbstractSort
 
   @GwtIncompatible // not needed in emulated source
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 1;
 }

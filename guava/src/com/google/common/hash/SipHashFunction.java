@@ -83,8 +83,7 @@ final class SipHashFunction extends AbstractHashFunction implements Serializable
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof SipHashFunction) {
-      SipHashFunction other = (SipHashFunction) object;
+    if (object instanceof SipHashFunction other) {
       return (c == other.c) && (d == other.d) && (k0 == other.k0) && (k1 == other.k1);
     }
     return false;
@@ -181,5 +180,6 @@ final class SipHashFunction extends AbstractHashFunction implements Serializable
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0L;
 }

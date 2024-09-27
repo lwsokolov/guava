@@ -410,8 +410,7 @@ public class ImmutableRangeMap<K extends Comparable<?>, V> implements RangeMap<K
 
   @Override
   public boolean equals(@CheckForNull Object o) {
-    if (o instanceof RangeMap) {
-      RangeMap<?, ?> rangeMap = (RangeMap<?, ?>) o;
+    if (o instanceof RangeMap<?,?> rangeMap) {
       return asMapOfRanges().equals(rangeMap.asMapOfRanges());
     }
     return false;
@@ -450,6 +449,7 @@ public class ImmutableRangeMap<K extends Comparable<?>, V> implements RangeMap<K
       return builder.build();
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -462,5 +462,6 @@ public class ImmutableRangeMap<K extends Comparable<?>, V> implements RangeMap<K
     throw new InvalidObjectException("Use SerializedForm");
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

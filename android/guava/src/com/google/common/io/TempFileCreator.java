@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.FileSystems;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.nio.file.attribute.AclEntry;
 import java.nio.file.attribute.AclEntryPermission;
 import java.nio.file.attribute.FileAttribute;
@@ -123,7 +123,7 @@ abstract class TempFileCreator {
     File createTempDir() {
       try {
         return java.nio.file.Files.createTempDirectory(
-                Paths.get(JAVA_IO_TMPDIR.value()), /* prefix= */ null, directoryPermissions.get())
+                Path.of(JAVA_IO_TMPDIR.value()), /* prefix= */ null, directoryPermissions.get())
             .toFile();
       } catch (IOException e) {
         throw new IllegalStateException("Failed to create directory", e);
@@ -133,7 +133,7 @@ abstract class TempFileCreator {
     @Override
     File createTempFile(String prefix) throws IOException {
       return java.nio.file.Files.createTempFile(
-              Paths.get(JAVA_IO_TMPDIR.value()),
+              Path.of(JAVA_IO_TMPDIR.value()),
               /* prefix= */ prefix,
               /* suffix= */ null,
               filePermissions.get())

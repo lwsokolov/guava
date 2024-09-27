@@ -71,16 +71,16 @@ abstract class TypeVisitor {
       }
       boolean succeeded = false;
       try {
-        if (type instanceof TypeVariable) {
-          visitTypeVariable((TypeVariable<?>) type);
-        } else if (type instanceof WildcardType) {
-          visitWildcardType((WildcardType) type);
-        } else if (type instanceof ParameterizedType) {
-          visitParameterizedType((ParameterizedType) type);
-        } else if (type instanceof Class) {
-          visitClass((Class<?>) type);
-        } else if (type instanceof GenericArrayType) {
-          visitGenericArrayType((GenericArrayType) type);
+        if (type instanceof TypeVariable<?> variable) {
+          visitTypeVariable(variable);
+        } else if (type instanceof WildcardType wildcardType) {
+          visitWildcardType(wildcardType);
+        } else if (type instanceof ParameterizedType parameterizedType) {
+          visitParameterizedType(parameterizedType);
+        } else if (type instanceof Class<?> class1) {
+          visitClass(class1);
+        } else if (type instanceof GenericArrayType arrayType) {
+          visitGenericArrayType(arrayType);
         } else {
           throw new AssertionError("Unknown type: " + type);
         }

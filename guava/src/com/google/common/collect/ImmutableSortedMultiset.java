@@ -763,5 +763,6 @@ public abstract class ImmutableSortedMultiset<E> extends ImmutableMultiset<E>
     throw new UnsupportedOperationException();
   }
 
+  @Serial
   private static final long serialVersionUID = 0xcafebabe;
 }

@@ -138,12 +138,12 @@ public class Crc32cHashFunctionTest extends TestCase {
   private static void assertCrc(int expectedCrc, byte[] data) {
     int actualCrc = Hashing.crc32c().hashBytes(data).asInt();
     assertEquals(
-        String.format("expected: %08x, actual: %08x", expectedCrc, actualCrc),
+        "expected: %08x, actual: %08x".formatted(expectedCrc, actualCrc),
         expectedCrc,
         actualCrc);
     int actualCrcHasher = Hashing.crc32c().newHasher().putBytes(data).hash().asInt();
     assertEquals(
-        String.format("expected: %08x, actual: %08x", expectedCrc, actualCrc),
+        "expected: %08x, actual: %08x".formatted(expectedCrc, actualCrc),
         expectedCrc,
         actualCrcHasher);
   }

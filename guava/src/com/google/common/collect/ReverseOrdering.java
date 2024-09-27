@@ -100,8 +100,7 @@ final class ReverseOrdering<T extends @Nullable Object> extends Ordering<T>
     if (object == this) {
       return true;
     }
-    if (object instanceof ReverseOrdering) {
-      ReverseOrdering<?> that = (ReverseOrdering<?>) object;
+    if (object instanceof ReverseOrdering<?> that) {
       return this.forwardOrder.equals(that.forwardOrder);
     }
     return false;
@@ -112,5 +111,6 @@ final class ReverseOrdering<T extends @Nullable Object> extends Ordering<T>
     return forwardOrder + ".reverse()";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

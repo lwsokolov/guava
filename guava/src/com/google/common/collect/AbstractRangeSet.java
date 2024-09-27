@@ -84,8 +84,7 @@ abstract class AbstractRangeSet<C extends Comparable> implements RangeSet<C> {
   public boolean equals(@CheckForNull Object obj) {
     if (obj == this) {
       return true;
-    } else if (obj instanceof RangeSet) {
-      RangeSet<?> other = (RangeSet<?>) obj;
+    } else if (obj instanceof RangeSet<?> other) {
       return this.asRanges().equals(other.asRanges());
     }
     return false;

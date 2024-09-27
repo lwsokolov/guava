@@ -60,8 +60,7 @@ final class Types {
 
   /** Returns the array type of {@code componentType}. */
   static Type newArrayType(Type componentType) {
-    if (componentType instanceof WildcardType) {
-      WildcardType wildcard = (WildcardType) componentType;
+    if (componentType instanceof WildcardType wildcard) {
       Type[] lowerBounds = wildcard.getLowerBounds();
       checkArgument(lowerBounds.length <= 1, "Wildcard cannot have more than one lower bounds.");
       if (lowerBounds.length == 1) {
@@ -165,7 +164,7 @@ final class Types {
    * <p>The format is subject to change.
    */
   static String toString(Type type) {
-    return (type instanceof Class) ? ((Class<?>) type).getName() : type.toString();
+    return (type instanceof Class<?> c) ? c.getName() : type.toString();
   }
 
   @CheckForNull
@@ -207,8 +206,7 @@ final class Types {
       if (componentType != null) {
         // Only the first bound can be a class or array.
         // Bounds after the first can only be interfaces.
-        if (componentType instanceof Class) {
-          Class<?> componentClass = (Class<?>) componentType;
+        if (componentType instanceof Class<?> componentClass) {
           if (componentClass.isPrimitive()) {
             return componentClass;
           }
@@ -244,8 +242,7 @@ final class Types {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof GenericArrayType) {
-        GenericArrayType that = (GenericArrayType) obj;
+      if (obj instanceof GenericArrayType that) {
         return Objects.equal(getGenericComponentType(), that.getGenericComponentType());
       }
       return false;
@@ -456,8 +453,7 @@ final class Types {
         return false;
       } else {
         // equal to any TypeVariable implementation regardless of bounds
-        if (obj instanceof TypeVariable) {
-          TypeVariable<?> that = (TypeVariable<?>) obj;
+        if (obj instanceof TypeVariable<?> that) {
           return name.equals(that.getName())
               && genericDeclaration.equals(that.getGenericDeclaration());
         }
@@ -490,8 +486,7 @@ final class Types {
 
     @Override
     public boolean equals(@CheckForNull Object obj) {
-      if (obj instanceof WildcardType) {
-        WildcardType that = (WildcardType) obj;
+      if (obj instanceof WildcardType that) {
         return lowerBounds.equals(Arrays.asList(that.getLowerBounds()))
             && upperBounds.equals(Arrays.asList(that.getUpperBounds()));
       }
@@ -528,8 +523,7 @@ final class Types {
 
   private static void disallowPrimitiveType(Type[] types, String usedAs) {
     for (Type type : types) {
-      if (type instanceof Class) {
-        Class<?> cls = (Class<?>) type;
+      if (type instanceof Class<?> cls) {
         checkArgument(!cls.isPrimitive(), "Primitive type '%s' used as %s", cls, usedAs);
       }
     }
@@ -554,8 +548,7 @@ final class Types {
       @Override
       Type usedInGenericType(Type type) {
         checkNotNull(type);
-        if (type instanceof Class) {
-          Class<?> cls = (Class<?>) type;
+        if (type instanceof Class<?> cls) {
           if (cls.isArray()) {
             return new GenericArrayTypeImpl(cls.getComponentType());
           }
@@ -566,8 +559,8 @@ final class Types {
     JAVA7 {
       @Override
       Type newArrayType(Type componentType) {
-        if (componentType instanceof Class) {
-          return getArrayClass((Class<?>) componentType);
+        if (componentType instanceof Class<?> class1) {
+          return getArrayClass(class1);
         } else {
           return new GenericArrayTypeImpl(componentType);
         }

@@ -61,6 +61,7 @@ public class HashBasedTable<R, C, V> extends StandardTable<R, C, V> {
       return Maps.newLinkedHashMapWithExpectedSize(expectedSize);
     }
 
+    @Serial
     private static final long serialVersionUID = 0;
   }
 
@@ -102,5 +103,6 @@ public class HashBasedTable<R, C, V> extends StandardTable<R, C, V> {
     super(backingMap, factory);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -334,8 +334,13 @@ public class CacheBuilderSpecTest extends TestCase {
   public void testParse_whitespaceAllowed() {
     CacheBuilderSpec spec =
         parse(
-            " initialCapacity=10,\nmaximumSize=20,\t\r"
-                + "weakKeys \t ,softValues \n , \r  expireAfterWrite \t =  15s\n\n");
+            """
+             initialCapacity=10,
+            maximumSize=20,	\
+            weakKeys 	 ,softValues\s
+             ,   expireAfterWrite 	 =  15s
+            
+            """);
     assertEquals(10, spec.initialCapacity.intValue());
     assertEquals(20, spec.maximumSize.intValue());
     assertNull(spec.maximumWeight);

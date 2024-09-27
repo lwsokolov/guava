@@ -2079,8 +2079,8 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
         return lockedGetOrLoad(key, hash, loader);
       } catch (ExecutionException ee) {
         Throwable cause = ee.getCause();
-        if (cause instanceof Error) {
-          throw new ExecutionError((Error) cause);
+        if (cause instanceof Error error) {
+          throw new ExecutionError(error);
         } else if (cause instanceof RuntimeException) {
           throw new UncheckedExecutionException(cause);
         }
@@ -4541,8 +4541,7 @@ class LocalCache<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> 
     @Override
     public boolean equals(@CheckForNull Object object) {
       // Cannot use key and value equivalence
-      if (object instanceof Entry) {
-        Entry<?, ?> that = (Entry<?, ?>) object;
+      if (object instanceof Entry<?,?> that) {
         return key.equals(that.getKey()) && value.equals(that.getValue());
       }
       return false;

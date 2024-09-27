@@ -57,8 +57,7 @@ final class CompoundOrdering<T extends @Nullable Object> extends Ordering<T>
     if (object == this) {
       return true;
     }
-    if (object instanceof CompoundOrdering) {
-      CompoundOrdering<?> that = (CompoundOrdering<?>) object;
+    if (object instanceof CompoundOrdering<?> that) {
       return Arrays.equals(this.comparators, that.comparators);
     }
     return false;
@@ -74,5 +73,6 @@ final class CompoundOrdering<T extends @Nullable Object> extends Ordering<T>
     return "Ordering.compound(" + Arrays.toString(comparators) + ")";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

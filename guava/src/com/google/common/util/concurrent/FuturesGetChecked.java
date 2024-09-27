@@ -206,8 +206,8 @@ final class FuturesGetChecked {
   // TODO(cpovirk): change parameter order to match other helper methods (Class, Throwable)?
   private static <X extends Exception> void wrapAndThrowExceptionOrError(
       Throwable cause, Class<X> exceptionClass) throws X {
-    if (cause instanceof Error) {
-      throw new ExecutionError((Error) cause);
+    if (cause instanceof Error error) {
+      throw new ExecutionError(error);
     }
     if (cause instanceof RuntimeException) {
       throw new UncheckedExecutionException(cause);

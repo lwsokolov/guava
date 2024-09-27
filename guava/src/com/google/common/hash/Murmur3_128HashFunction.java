@@ -72,8 +72,7 @@ final class Murmur3_128HashFunction extends AbstractHashFunction implements Seri
 
   @Override
   public boolean equals(@CheckForNull Object object) {
-    if (object instanceof Murmur3_128HashFunction) {
-      Murmur3_128HashFunction other = (Murmur3_128HashFunction) object;
+    if (object instanceof Murmur3_128HashFunction other) {
       return seed == other.seed;
     }
     return false;
@@ -212,5 +211,6 @@ final class Murmur3_128HashFunction extends AbstractHashFunction implements Seri
     }
   }
 
+  @Serial
   private static final long serialVersionUID = 0L;
 }

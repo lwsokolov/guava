@@ -55,6 +55,7 @@ import java.util.function.DoubleUnaryOperator;
 @J2ktIncompatible
 @ElementTypesAreNonnullByDefault
 public class AtomicDoubleArray implements Serializable {
+  @Serial
   private static final long serialVersionUID = 0L;
 
   // Making this non-final is the lesser evil according to Effective
@@ -168,7 +169,7 @@ public class AtomicDoubleArray implements Serializable {
    * @return true if successful
    */
   public final boolean weakCompareAndSet(int i, double expect, double update) {
-    return longs.weakCompareAndSet(i, doubleToRawLongBits(expect), doubleToRawLongBits(update));
+    return longs.weakCompareAndSetPlain(i, doubleToRawLongBits(expect), doubleToRawLongBits(update));
   }
 
   /**

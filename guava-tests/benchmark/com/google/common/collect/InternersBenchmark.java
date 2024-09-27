@@ -17,6 +17,7 @@
 package com.google.common.collect;
 
 import com.google.caliper.Benchmark;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Benchmarking interners.
@@ -28,7 +29,7 @@ public class InternersBenchmark {
   int weakInterner(int reps) {
     Interner<String> interner = Interners.newWeakInterner();
     for (int i = 0; i < reps; i++) {
-      String unused = interner.intern(Double.toHexString(Math.random()));
+      String unused = interner.intern(Double.toHexString(ThreadLocalRandom.current().nextDouble()));
     }
     return reps;
   }
@@ -37,7 +38,7 @@ public class InternersBenchmark {
   int strongInterner(int reps) {
     Interner<String> interner = Interners.newStrongInterner();
     for (int i = 0; i < reps; i++) {
-      String unused = interner.intern(Double.toHexString(Math.random()));
+      String unused = interner.intern(Double.toHexString(ThreadLocalRandom.current().nextDouble()));
     }
     return reps;
   }
@@ -45,7 +46,7 @@ public class InternersBenchmark {
   @Benchmark
   int stringIntern(int reps) {
     for (int i = 0; i < reps; i++) {
-      String unused = Double.toHexString(Math.random()).intern();
+      String unused = Double.toHexString(ThreadLocalRandom.current().nextDouble()).intern();
     }
     return reps;
   }

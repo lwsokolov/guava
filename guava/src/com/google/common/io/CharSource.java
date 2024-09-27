@@ -124,8 +124,8 @@ public abstract class CharSource {
    */
   public BufferedReader openBufferedStream() throws IOException {
     Reader reader = openStream();
-    return (reader instanceof BufferedReader)
-        ? (BufferedReader) reader
+    return (reader instanceof BufferedReader br)
+        ? br
         : new BufferedReader(reader);
   }
 
@@ -488,8 +488,8 @@ public abstract class CharSource {
    * @since 15.0 (since 14.0 as {@code CharStreams.asCharSource(String)})
    */
   public static CharSource wrap(CharSequence charSequence) {
-    return charSequence instanceof String
-        ? new StringCharSource((String) charSequence)
+    return charSequence instanceof String s
+        ? new StringCharSource(s)
         : new CharSequenceCharSource(charSequence);
   }
 

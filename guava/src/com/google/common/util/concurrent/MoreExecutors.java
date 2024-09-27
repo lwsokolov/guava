@@ -461,10 +461,10 @@ public final class MoreExecutors {
   @J2ktIncompatible
   @GwtIncompatible // TODO
   public static ListeningExecutorService listeningDecorator(ExecutorService delegate) {
-    return (delegate instanceof ListeningExecutorService)
-        ? (ListeningExecutorService) delegate
-        : (delegate instanceof ScheduledExecutorService)
-            ? new ScheduledListeningDecorator((ScheduledExecutorService) delegate)
+    return (delegate instanceof ListeningExecutorService les)
+        ? les
+        : (delegate instanceof ScheduledExecutorService ses)
+            ? new ScheduledListeningDecorator(ses)
             : new ListeningDecorator(delegate);
   }
 
@@ -488,8 +488,8 @@ public final class MoreExecutors {
   @GwtIncompatible // TODO
   public static ListeningScheduledExecutorService listeningDecorator(
       ScheduledExecutorService delegate) {
-    return (delegate instanceof ListeningScheduledExecutorService)
-        ? (ListeningScheduledExecutorService) delegate
+    return (delegate instanceof ListeningScheduledExecutorService lses)
+        ? lses
         : new ScheduledListeningDecorator(delegate);
   }
 

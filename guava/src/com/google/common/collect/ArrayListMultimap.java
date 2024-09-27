@@ -125,8 +125,8 @@ public final class ArrayListMultimap<K extends @Nullable Object, V extends @Null
   private ArrayListMultimap(Multimap<? extends K, ? extends V> multimap) {
     this(
         multimap.keySet().size(),
-        (multimap instanceof ArrayListMultimap)
-            ? ((ArrayListMultimap<?, ?>) multimap).expectedValuesPerKey
+        (multimap instanceof ArrayListMultimap<?,?> alm)
+            ? alm.expectedValuesPerKey
             : DEFAULT_VALUES_PER_KEY);
     putAll(multimap);
   }
@@ -178,5 +178,6 @@ public final class ArrayListMultimap<K extends @Nullable Object, V extends @Null
 
   @GwtIncompatible // Not needed in emulated source.
   @J2ktIncompatible
+  @Serial
   private static final long serialVersionUID = 0;
 }

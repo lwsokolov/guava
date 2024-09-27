@@ -679,8 +679,7 @@ public final class InternetDomainName {
       return true;
     }
 
-    if (object instanceof InternetDomainName) {
-      InternetDomainName that = (InternetDomainName) object;
+    if (object instanceof InternetDomainName that) {
       return this.name.equals(that.name);
     }
 

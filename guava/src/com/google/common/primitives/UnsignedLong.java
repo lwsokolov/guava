@@ -243,8 +243,7 @@ public final class UnsignedLong extends Number implements Comparable<UnsignedLon
 
   @Override
   public boolean equals(@CheckForNull Object obj) {
-    if (obj instanceof UnsignedLong) {
-      UnsignedLong other = (UnsignedLong) obj;
+    if (obj instanceof UnsignedLong other) {
       return value == other.value;
     }
     return false;

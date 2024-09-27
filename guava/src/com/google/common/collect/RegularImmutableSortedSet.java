@@ -110,8 +110,8 @@ final class RegularImmutableSortedSet<E> extends ImmutableSortedSet<E> {
     // targets.size() < size() / log(size())
     // TODO(kevinb): see if we can share code with OrderedIterator after it
     // graduates from labs.
-    if (targets instanceof Multiset) {
-      targets = ((Multiset<?>) targets).elementSet();
+    if (targets instanceof Multiset<?> multiset) {
+      targets = multiset.elementSet();
     }
     if (!SortedIterables.hasSameComparator(comparator(), targets) || (targets.size() <= 1)) {
       return super.containsAll(targets);

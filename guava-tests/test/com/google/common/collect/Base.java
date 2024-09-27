@@ -38,8 +38,8 @@ class Base implements Comparable<Base>, Serializable {
   public boolean equals(@Nullable Object other) {
     if (other == null) {
       return false;
-    } else if (other instanceof Base) {
-      return s.equals(((Base) other).s);
+    } else if (other instanceof Base base) {
+      return s.equals(base.s);
     } else {
       return false;
     }
@@ -50,5 +50,6 @@ class Base implements Comparable<Base>, Serializable {
     return s.compareTo(o.s);
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }

@@ -135,12 +135,12 @@ final class CombinedFuture<V extends @Nullable Object>
       // See afterRanInterruptiblySuccess.
       CombinedFuture.this.task = null;
 
-      if (error instanceof ExecutionException) {
+      if (error instanceof ExecutionException exception) {
         /*
          * Cast to ExecutionException to satisfy our nullness checker, which (unsoundly but
          * *usually* safely) assumes that getCause() returns non-null on an ExecutionException.
          */
-        CombinedFuture.this.setException(((ExecutionException) error).getCause());
+        CombinedFuture.this.setException(exception.getCause());
       } else if (error instanceof CancellationException) {
         cancel(false);
       } else {

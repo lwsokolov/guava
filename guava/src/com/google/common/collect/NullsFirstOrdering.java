@@ -70,8 +70,7 @@ final class NullsFirstOrdering<T extends @Nullable Object> extends Ordering<@Nul
     if (object == this) {
       return true;
     }
-    if (object instanceof NullsFirstOrdering) {
-      NullsFirstOrdering<?> that = (NullsFirstOrdering<?>) object;
+    if (object instanceof NullsFirstOrdering<?> that) {
       return this.ordering.equals(that.ordering);
     }
     return false;
@@ -87,5 +86,6 @@ final class NullsFirstOrdering<T extends @Nullable Object> extends Ordering<@Nul
     return ordering + ".nullsFirst()";
   }
 
+  @Serial
   private static final long serialVersionUID = 0;
 }
